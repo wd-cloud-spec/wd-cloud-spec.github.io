@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>王栋 — AI应用构建者</title>
+<meta name="description" content="能独立走通商业闭环的AI产品构建者。7年，从设计到商业到技术。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+/* ============================================
+   CSS Custom Properties & Design Tokens
+   ============================================ */
+:root {
+  /* Dark theme (default) */
+  --bg-primary: #0d0d0c;
+  --bg-secondary: #141413;
+  --bg-card: #1a1a18;
+  --bg-card-hover: #22221f;
+  --bg-elevated: #1e1e1b;
+
+  --text-primary: #e8e4dd;
+  --text-secondary: #a0988c;
+  --text-tertiary: #6b6560;
+  --text-accent: #b8a88a;
+
+  --accent: #9a8c6c;
+  --accent-muted: #6b6045;
+  --accent-glow: rgba(154, 140, 108, 0.12);
+  --accent-strong: #c4a975;
+
+  --sage: #8b9d83;
+  --sage-muted: #5a6b55;
+  --sage-glow: rgba(139, 157, 131, 0.1);
+
+  --border: #2a2926;
+  --border-light: #343330;
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+
+  --font-display: 'Playfair Display', 'Noto Serif SC', serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  --spacing-xs: 8px;
+  --spacing-sm: 16px;
+  --spacing-md: 32px;
+  --spacing-lg: 64px;
+  --spacing-xl: 120px;
+  --spacing-2xl: 180px;
+
+  --transition-fast: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 700ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  --max-width: 1200px;
+}
+
+/* Light theme */
+[data-theme="light"] {
+  --bg-primary: #f9f7f3;
+  --bg-secondary: #f2efe9;
+  --bg-card: #ffffff;
+  --bg-card-hover: #faf8f4;
+  --bg-elevated: #ffffff;
+
+  --text-primary: #1a1816;
+  --text-secondary: #6b6560;
+  --text-tertiary: #9c9790;
+  --text-accent: #8b7640;
+
+  --accent: #8b7640;
+  --accent-muted: #b8a070;
+  --accent-glow: rgba(139, 118, 64, 0.08);
+
+  --border: #e5e0d8;
+  --border-light: #f0ebe2;
+}
+
+/* ============================================
+   Reset & Base
+   ============================================ */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background var(--transition-smooth), color var(--transition-smooth);
+  overflow-x: hidden;
+}
+
+/* Selection */
+::selection {
+  background: var(--accent-glow);
+  color: var(--accent-strong);
+}
+
+/* ============================================
+   Typography
+   ============================================ */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: clamp(2.4rem, 4vw, 3.6rem);
+  letter-spacing: -0.02em;
+  margin-bottom: var(--spacing-md);
+}
+
+h3 {
+  font-size: 1.5rem;
+  letter-spacing: -0.01em;
+}
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: var(--spacing-sm);
+  display: block;
+}
+
+.tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  padding: 4px 12px;
+  border-radius: 100px;
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  transition: all var(--transition-fast);
+}
+
+.tag:hover {
+  border-color: var(--accent);
+  color: var(--accent-strong);
+}
+
+/* ============================================
+   Theme Toggle
+   ============================================ */
+.theme-toggle {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 1000;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: all var(--transition-fast);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.theme-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent-strong);
+  transform: scale(1.05);
+}
+
+/* ============================================
+   Navigation
+   ============================================ */
+.nav {
+  position: fixed;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 100px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.nav a {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  padding: 8px 20px;
+  border-radius: 100px;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+}
+.nav a:hover,
+.nav a.active {
+  color: var(--text-primary);
+  background: var(--bg-secondary);
+}
+
+/* ============================================
+   Container
+   ============================================ */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+/* ============================================
+   Scene 1: Hero
+   ============================================ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  padding: var(--spacing-xl) 0;
+}
+.hero-bg {
+  position: absolute;
+  top: -30%;
+  right: -20%;
+  width: 60%;
+  height: 80%;
+  background: radial-gradient(ellipse at center, var(--accent-glow) 0%, transparent 70%);
+  pointer-events: none;
+  opacity: 0.6;
+}
+.hero-bg-2 {
+  position: absolute;
+  bottom: 10%;
+  left: -10%;
+  width: 40%;
+  height: 50%;
+  background: radial-gradient(ellipse at center, var(--sage-glow) 0%, transparent 70%);
+  pointer-events: none;
+  opacity: 0.4;
+}
+.hero .container {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-pre {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+  margin-bottom: var(--spacing-sm);
+  text-transform: uppercase;
+}
+.hero h1 {
+  font-size: clamp(3.6rem, 8vw, 7rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin-bottom: var(--spacing-sm);
+}
+.hero h1 .highlight {
+  color: var(--accent-strong);
+  position: relative;
+}
+
+.hero-tagline {
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  color: var(--text-secondary);
+  font-weight: 400;
+  max-width: 600px;
+  margin-bottom: var(--spacing-lg);
+  line-height: 1.6;
+  font-family: var(--font-display);
+  font-style: italic;
+}
+
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  color: var(--text-tertiary);
+  font-size: 0.85rem;
+  font-family: var(--font-mono);
+  letter-spacing: 0.04em;
+}
+.hero-meta span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.hero-meta .dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-tertiary);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  animation: float 2s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(8px); }
+}
+.hero-scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--text-tertiary), transparent);
+}
+
+/* ============================================
+   Scene 2: Capabilities (三栏)
+   ============================================ */
+.capabilities {
+  padding: var(--spacing-2xl) 0;
+  position: relative;
+}
+.cap-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.cap-card {
+  background: var(--bg-card);
+  padding: 48px 36px;
+  position: relative;
+  transition: all var(--transition-smooth);
+  overflow: hidden;
+}
+.cap-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, var(--accent-glow), transparent);
+  opacity: 0;
+  transition: opacity var(--transition-smooth);
+}
+.cap-card:hover::before {
+  opacity: 1;
+}
+.cap-card:hover {
+  background: var(--bg-card-hover);
+}
+.cap-number {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--accent-muted);
+  opacity: 0.3;
+  line-height: 1;
+  margin-bottom: var(--spacing-sm);
+}
+.cap-card h3 {
+  margin-bottom: var(--spacing-xs);
+  position: relative;
+  z-index: 1;
+}
+.cap-card p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================
+   Scene 3: Featured Projects (主项目)
+   ============================================ */
+.projects-featured {
+  padding: var(--spacing-lg) 0 var(--spacing-2xl);
+}
+
+.project-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  margin-bottom: var(--spacing-xl);
+  padding: var(--spacing-lg) 0;
+  border-bottom: 1px solid var(--border);
+}
+.project-hero:last-of-type {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+.project-hero:nth-child(even) {
+  direction: rtl;
+}
+.project-hero:nth-child(even) > * {
+  direction: ltr;
+}
+
+.project-visual {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  aspect-ratio: 4/3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.project-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+}
+.project-visual-inner {
+  padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  color: var(--text-tertiary);
+  text-align: center;
+}
+.project-visual-inner svg {
+  opacity: 0.3;
+}
+.project-visual-inner .placeholder-text {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+}
+
+.project-info .project-number {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+  margin-bottom: var(--spacing-xs);
+}
+.project-info h3 {
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  margin-bottom: var(--spacing-sm);
+  font-weight: 700;
+}
+.project-info .project-desc {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: var(--spacing-md);
+}
+.project-highlights {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: var(--spacing-md);
+}
+.project-highlights li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+.project-highlights li::before {
+  content: '';
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin-top: 8px;
+  flex-shrink: 0;
+}
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* ============================================
+   Scene 4: Secondary Projects
+   ============================================ */
+.projects-secondary {
+  padding: 0 0 var(--spacing-2xl);
+}
+.projects-secondary h3.section-subtitle {
+  font-size: 1.8rem;
+  margin-bottom: var(--spacing-lg);
+  color: var(--text-secondary);
+}
+.projects-secondary h3.section-subtitle span {
+  color: var(--text-primary);
+}
+.project-mini-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-md);
+}
+.project-mini-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 36px;
+  transition: all var(--transition-smooth);
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+}
+.project-mini-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, var(--accent-muted), transparent);
+  opacity: 0;
+  transition: opacity var(--transition-smooth);
+}
+.project-mini-card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-light);
+  transform: translateY(-2px);
+}
+.project-mini-card:hover::after {
+  opacity: 1;
+}
+.project-mini-card h4 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+}
+.project-mini-card p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+/* ============================================
+   Scene 5: Timeline
+   ============================================ */
+.timeline-section {
+  padding: var(--spacing-2xl) 0;
+  position: relative;
+}
+.timeline {
+  position: relative;
+  padding-left: 0;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 24px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--accent-muted), var(--border), var(--border));
+}
+.timeline-item {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: var(--spacing-md);
+  padding-bottom: 48px;
+  position: relative;
+}
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+.timeline-dot {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  position: relative;
+  z-index: 2;
+  transition: all var(--transition-fast);
+}
+.timeline-item:hover .timeline-dot {
+  border-color: var(--accent);
+  box-shadow: 0 0 20px var(--accent-glow);
+}
+.timeline-year {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  margin-bottom: 4px;
+}
+.timeline-item h3 {
+  font-size: 1.4rem;
+  margin-bottom: 8px;
+}
+.timeline-item .timeline-what {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 6px;
+}
+.timeline-item .timeline-gain {
+  font-size: 0.88rem;
+  color: var(--sage);
+  font-weight: 500;
+}
+.timeline-item .timeline-gain::before {
+  content: '↳ ';
+  color: var(--text-tertiary);
+  font-weight: 400;
+}
+
+/* ============================================
+   Scene 6: Contact
+   ============================================ */
+.contact {
+  padding: var(--spacing-2xl) 0 var(--spacing-xl);
+  position: relative;
+}
+.contact-inner {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 72px 64px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.contact-inner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--accent-muted), transparent);
+}
+.contact-inner h2 {
+  margin-bottom: var(--spacing-sm);
+}
+.contact-inner > p {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  margin-bottom: var(--spacing-lg);
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.contact-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all var(--transition-fast);
+  background: var(--bg-secondary);
+}
+.contact-link:hover {
+  border-color: var(--accent);
+  background: var(--bg-elevated);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+.contact-location {
+  margin-top: var(--spacing-md);
+  color: var(--text-tertiary);
+  font-size: 0.85rem;
+}
+
+/* ============================================
+   Footer
+   ============================================ */
+.footer {
+  padding: var(--spacing-lg) 0;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  color: var(--text-tertiary);
+  font-size: 0.8rem;
+}
+
+/* ============================================
+   Scroll Reveal Animations
+   ============================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+.cap-card.reveal { transform: translateY(60px); }
+.cap-card.reveal.visible { transform: translateY(0); }
+.cap-card:nth-child(1) { transition-delay: 0s; }
+.cap-card:nth-child(2) { transition-delay: 0.15s; }
+.cap-card:nth-child(3) { transition-delay: 0.3s; }
+
+.project-hero .project-visual.reveal { transform: translateX(-30px); }
+.project-hero .project-visual.reveal.visible { transform: translateX(0); }
+.project-hero .project-info.reveal { transform: translateX(30px); }
+.project-hero .project-info.reveal.visible { transform: translateX(0); }
+.project-hero:nth-child(even) .project-visual.reveal { transform: translateX(30px); }
+.project-hero:nth-child(even) .project-visual.reveal.visible { transform: translateX(0); }
+.project-hero:nth-child(even) .project-info.reveal { transform: translateX(-30px); }
+.project-hero:nth-child(even) .project-info.reveal.visible { transform: translateX(0); }
+
+.project-mini-card.reveal { transform: translateY(50px); }
+.project-mini-card.reveal.visible { transform: translateY(0); }
+.project-mini-card:nth-child(1) { transition-delay: 0s; }
+.project-mini-card:nth-child(2) { transition-delay: 0.1s; }
+
+.timeline-item.reveal { transform: translateX(-20px); }
+.timeline-item.reveal.visible { transform: translateX(0); }
+
+/* ============================================
+   Responsive
+   ============================================ */
+@media (max-width: 900px) {
+  .cap-grid {
+    grid-template-columns: 1fr;
+  }
+  .project-hero {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    direction: ltr !important;
+  }
+  .project-hero:nth-child(even) > * {
+    direction: ltr;
+  }
+  .project-mini-grid {
+    grid-template-columns: 1fr;
+  }
+  .contact-inner {
+    padding: 48px 24px;
+  }
+  .nav {
+    display: none;
+  }
+  .hero h1 {
+    font-size: clamp(2.6rem, 8vw, 4rem);
+  }
+}
+
+@media (max-width: 600px) {
+  :root {
+    --spacing-xl: 80px;
+    --spacing-2xl: 120px;
+    --spacing-lg: 48px;
+  }
+  .hero-meta {
+    gap: 12px;
+    font-size: 0.75rem;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- Theme Toggle -->
+<button class="theme-toggle" id="themeToggle" aria-label="切换主题">◐</button>
+
+<!-- Navigation -->
+<nav class="nav" id="nav">
+  <a href="#hero">首页</a>
+  <a href="#capabilities">能力</a>
+  <a href="#projects">项目</a>
+  <a href="#timeline">历程</a>
+  <a href="#contact">联系</a>
+</nav>
+
+<!-- ============================================
+     Scene 1: Hero
+     ============================================ -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-bg-2"></div>
+  <div class="container">
+    <p class="hero-pre reveal">Forward Deployed · AI Builder</p>
+    <h1 class="reveal reveal-delay-1">王栋<span class="highlight">.</span></h1>
+    <p class="hero-tagline reveal reveal-delay-2">
+      能独立走通商业闭环的AI产品构建者<br>
+      从设计到商业到技术，一条完整的成长线
+    </p>
+    <div class="hero-meta reveal reveal-delay-3">
+      <span>7年跨界</span>
+      <span class="dot"></span>
+      <span>4个AI产品</span>
+      <span class="dot"></span>
+      <span>重庆 · 成都</span>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>向下滚动</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- ============================================
+     Scene 2: Capabilities
+     ============================================ -->
+<section class="capabilities" id="capabilities">
+  <div class="container">
+    <span class="section-label reveal">What I Do</span>
+    <h2 class="reveal">我能做什么</h2>
+    <div class="cap-grid">
+      <div class="cap-card reveal">
+        <div class="cap-number">01</div>
+        <h3>商业闭环</h3>
+        <p>3年创业实战，从客户对接到方案输出，从项目执行到回款维护——完整走过从0到1的商业全链路。不是纸上谈兵，是真正收过钱的操盘手。</p>
+      </div>
+      <div class="cap-card reveal">
+        <div class="cap-number">02</div>
+        <h3>技术落地</h3>
+        <p>独立完成4个AI产品的全栈开发。从RAG架构选型到OCR降级链路，从零依赖Node.js后端到PySide6桌面应用——AI不是调API，是可交付的产品。</p>
+      </div>
+      <div class="cap-card reveal">
+        <div class="cap-number">03</div>
+        <h3>UI设计</h3>
+        <p>3年专业平面设计功底 + 对桌面端/Web端UI规范的深度理解。擅长Win11 Fluent Design、极简科技风等现代设计语言——从信息架构到像素级落地，一个人就能交付好看且好用的产品界面。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     Scene 3: Featured Projects
+     ============================================ -->
+<section class="projects-featured" id="projects">
+  <div class="container">
+    <span class="section-label reveal">Featured Work</span>
+    <h2 class="reveal">AI 项目案例</h2>
+
+    <!-- Project 1: Enterprise System -->
+    <div class="project-hero reveal">
+      <div class="project-visual reveal">
+        <video class="project-video" autoplay muted loop playsinline
+               src="videos/enterprise.mp4"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        </video>
+        <div class="project-visual-inner" style="display:none">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" opacity="0.5">
+            <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+          </svg>
+          <span class="placeholder-text">视频加载中 · 企业管理系统</span>
+        </div>
+      </div>
+      <div class="project-info reveal">
+        <p class="project-number">01 / 全栈 + AI 集成</p>
+        <h3>企业管理系统</h3>
+        <p class="project-desc">
+          一套面向中小企业的AI全栈管理平台，集成OA、CRM、WMS三大子系统，
+          将DeepSeek的AI能力嵌入6个真实业务流程——不是Demo，是可部署的产品。
+        </p>
+        <ul class="project-highlights">
+          <li>Node.js 零依赖后端，~60个API端点，100并发压测零崩溃</li>
+          <li>6大AI功能：智能填单、发票识别、CRM摘要、赢单预测、采购建议、全局助手</li>
+          <li>自研中文NLP确定性后处理，补充AI输出的不稳定性</li>
+          <li>Electron 打包为桌面应用，纯手写 XLSX 解析器</li>
+        </ul>
+        <div class="project-tags">
+          <span class="tag">Node.js</span>
+          <span class="tag">DeepSeek</span>
+          <span class="tag">Electron</span>
+          <span class="tag">RBAC</span>
+          <span class="tag">零依赖</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 2: Grade Tool -->
+    <div class="project-hero reveal">
+      <div class="project-visual reveal">
+        <video class="project-video" autoplay muted loop playsinline
+               src="videos/grade.mp4"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        </video>
+        <div class="project-visual-inner" style="display:none">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" opacity="0.5">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+          </svg>
+          <span class="placeholder-text">视频加载中 · 成绩统计工具</span>
+        </div>
+      </div>
+      <div class="project-info reveal">
+        <p class="project-number">02 / AI × 教育垂直场景</p>
+        <h3>成绩统计工具</h3>
+        <p class="project-desc">
+          一款面向中学教师的桌面端成绩管理应用。AI视觉识别让教师从手工录入中解放，
+          四级OCR降级链路确保有网无网都能用。Win11 Fluent Design 极简科技风界面，把AI打包成普通人双击就能用的工具。
+        </p>
+        <ul class="project-highlights">
+          <li>Qwen-VL 视觉大模型识别表格 → 结构化JSON，支持多图合并按姓名归并</li>
+          <li>4级OCR降级：Qwen-VL → 腾讯云 → RapidOCR → PaddleOCR，逐级兜底</li>
+          <li>PySide6 + Fluent-Widgets，Microsoft Fluent Design System，暗色主题默认，Mica 材质效果</li>
+          <li>PyInstaller 打包 .exe，SQLite 本地存储，教师无需安装任何环境</li>
+        </ul>
+        <div class="project-tags">
+          <span class="tag">Python</span>
+          <span class="tag">Qwen-VL</span>
+          <span class="tag">PySide6</span>
+          <span class="tag">Fluent Design</span>
+          <span class="tag">SQLite</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 3: RAG MAX -->
+    <div class="project-hero reveal">
+      <div class="project-visual reveal">
+        <video class="project-video" autoplay muted loop playsinline
+               src="videos/rag.mp4"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        </video>
+        <div class="project-visual-inner" style="display:none">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" opacity="0.5">
+            <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+          </svg>
+          <span class="placeholder-text">视频加载中 · RAG知识库MAX</span>
+        </div>
+      </div>
+      <div class="project-info reveal">
+        <p class="project-number">03 / RAG 全链路实践</p>
+        <h3>RAG 知识库 MAX</h3>
+        <p class="project-desc">
+          面向招投标、法务、研究的私有化桌面端RAG系统。17种模块化RAG策略、6家国产大模型接入、
+          硬件自适应量化——对RAG全链路从理论到工程的深度实践。
+        </p>
+        <ul class="project-highlights">
+          <li>17种RAG策略分三层架构：切分组6选1 + 增强组6选多 + 高阶组5选多，实时冲突校验</li>
+          <li>bge-m3 本地Embedding + bge-reranker 精排，向量永久不变，仅增量重建索引结构</li>
+          <li>离线模式自动降级：CRAG→Self-RAG、HyDE→语义检索、GraphRAG→分层索引</li>
+          <li>AES-256 全数据加密，PyQt6 桌面端，支持暗色/亮色双模</li>
+        </ul>
+        <div class="project-tags">
+          <span class="tag">Python</span>
+          <span class="tag">bge-m3</span>
+          <span class="tag">GraphRAG</span>
+          <span class="tag">PyQt6</span>
+          <span class="tag">AES-256</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 4: Coze Food System -->
+    <div class="project-hero reveal">
+      <div class="project-visual reveal">
+        <video class="project-video" autoplay muted loop playsinline
+               src="videos/food.mp4"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        </video>
+        <div class="project-visual-inner" style="display:none">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" opacity="0.5">
+            <path d="M3 2v7c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2V2"/><path d="M17 9v8a4 4 0 0 1-4 4h0"/><circle cx="9" cy="19" r="2"/>
+          </svg>
+          <span class="placeholder-text">视频加载中 · 连锁餐饮智能管理系统</span>
+        </div>
+      </div>
+      <div class="project-info reveal">
+        <p class="project-number">04 / 低代码 AI 平台搭建</p>
+        <h3>连锁餐饮智能管理系统</h3>
+        <p class="project-desc">
+          基于 Coze 平台搭建的连锁餐饮SaaS工具，覆盖仓储统计、客户画像分析、会员体系、
+          多分店数据看板——验证了低代码AI平台快速搭建行业应用的能力。
+        </p>
+        <ul class="project-highlights">
+          <li>基于 Coze 平台的 Agent 编排与工作流设计，零代码搭建业务逻辑</li>
+          <li>仓储统计模块：多仓库库存追踪与低库存预警</li>
+          <li>客户画像分析：消费行为聚类与分群运营建议</li>
+          <li>多分店数据看板：跨门店指标对比与趋势分析</li>
+        </ul>
+        <div class="project-tags">
+          <span class="tag">Coze</span>
+          <span class="tag">Agent</span>
+          <span class="tag">数据看板</span>
+          <span class="tag">会员体系</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     Scene 5: Timeline
+     ============================================ -->
+<section class="timeline-section" id="timeline">
+  <div class="container">
+    <span class="section-label reveal">Growth Path</span>
+    <h2 class="reveal">成长轨迹</h2>
+    <p class="reveal" style="color: var(--text-secondary); margin-bottom: var(--spacing-lg); max-width: 560px;">
+      不是简单的"在哪家公司待了多久"，而是每个阶段沉淀了怎样的核心能力。
+    </p>
+    <div class="timeline">
+      <div class="timeline-item reveal">
+        <div class="timeline-dot">🎨</div>
+        <div>
+          <p class="timeline-year">2019 — 2022 · 3年</p>
+          <h3>平面设计师</h3>
+          <p class="timeline-what">淘宝美工 / 品牌视觉全案设计</p>
+          <p class="timeline-gain">审美判断力、视觉沟通能力、对"什么是好的用户体验"建立了直觉</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot">📋</div>
+        <div>
+          <p class="timeline-year">2022 — 2023 · 1年</p>
+          <h3>B端产品经理</h3>
+          <p class="timeline-what">信锐科技 · 政企/高校园区网络建设</p>
+          <p class="timeline-gain">企业客户需求挖掘、方案输出、招投标流程、ToB项目落地全链路</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot">🚀</div>
+        <div>
+          <p class="timeline-year">2023 — 2026 · 3年</p>
+          <h3>研学项目创始人</h3>
+          <p class="timeline-what">自主创业 · 近百场研学实践 · 零安全事故</p>
+          <p class="timeline-gain">完整的商业闭环能力——产品研发→渠道拓客→商务谈判→项目交付→客户维护→复购</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot">⚡</div>
+        <div>
+          <p class="timeline-year">现在</p>
+          <h3>AI产品构建者</h3>
+          <p class="timeline-what">4个从0到1的AI产品 · 跨Python/Node.js/Electron全栈</p>
+          <p class="timeline-gain">把商业经验+技术能力融合——让AI不再是Demo，而是可交付、可变现的产品</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     Scene 6: Contact
+     ============================================ -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-inner reveal">
+      <h2>建立联系</h2>
+      <p>如果你在找一个能独立把AI产品从想法做到交付的人——我们可以聊聊。</p>
+      <div class="contact-links">
+        <a href="mailto:1252395926@qq.com" class="contact-link">
+          ✉️ 发送邮件
+        </a>
+        <a href="https://gitee.com/scyilang_0" class="contact-link" target="_blank" rel="noopener">
+          🔗 Gitee
+        </a>
+        <a href="tel:13032839382" class="contact-link">
+          📞 130 3283 9382
+        </a>
+      </div>
+      <p class="contact-location">📍 重庆 · 成都 · 8.20后到岗</p>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <p>© 2026 王栋 · 从设计到商业到技术</p>
+  </div>
+</footer>
+
+<!-- ============================================
+     JavaScript: Scroll Reveal + Theme Toggle + Nav
+     ============================================ -->
+<script>
+(function() {
+  // --- Scroll Reveal ---
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px 0px -60px 0px',
+    threshold: 0.1
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // --- Theme Toggle ---
+  const html = document.documentElement;
+  const toggle = document.getElementById('themeToggle');
+
+  toggle.addEventListener('click', () => {
+    const current = html.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    toggle.textContent = next === 'dark' ? '◐' : '◑';
+    try { localStorage.setItem('theme', next); } catch(e) {}
+  });
+
+  // Load saved theme
+  try {
+    const saved = localStorage.getItem('theme');
+    if (saved) {
+      html.setAttribute('data-theme', saved);
+      toggle.textContent = saved === 'dark' ? '◐' : '◑';
+    }
+  } catch(e) {}
+
+  // --- Active Nav ---
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav a');
+
+  const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
+        });
+      }
+    });
+  }, { rootMargin: '-40% 0px -60% 0px' });
+
+  sections.forEach(s => navObserver.observe(s));
+
+  // --- Smooth scroll for nav ---
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = document.querySelector(link.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+
+  // --- Parallax on hero backgrounds ---
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        const scrollY = window.scrollY;
+        const bg1 = document.querySelector('.hero-bg');
+        const bg2 = document.querySelector('.hero-bg-2');
+        if (bg1) bg1.style.transform = `translateY(${scrollY * 0.15}px)`;
+        if (bg2) bg2.style.transform = `translateY(${scrollY * -0.08}px)`;
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+})();
+</script>
+
+</body>
+</html>

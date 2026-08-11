@@ -1,0 +1,4 @@
+videos/*.mp4
+videos/*.webm
+.DS_Store
+Thumbs.db
