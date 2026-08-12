@@ -443,15 +443,53 @@ h3 {
   background: var(--bg-card);
   border: 1px solid var(--border);
   aspect-ratio: 16/9;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+}
+.video-wrapper {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
 }
 .project-video {
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: var(--radius-lg);
+}
+.video-veil {
+  position: absolute;
+  inset: 0;
+  background: var(--bg-card);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  z-index: 2;
+  transition: opacity 0.6s ease-out, visibility 0.6s ease-out;
+  border-radius: var(--radius-lg);
+}
+.video-veil.unveiled {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.veil-ring {
+  width: 36px;
+  height: 36px;
+  border: 2px solid var(--border-light);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: veil-spin 1s linear infinite;
+}
+@keyframes veil-spin {
+  to { transform: rotate(360deg); }
+}
+.veil-text {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--text-tertiary);
 }
 .project-visual-inner {
   padding: var(--spacing-lg);
@@ -897,15 +935,12 @@ h3 {
     <!-- Project 1: Enterprise System -->
     <div class="project-hero reveal">
       <div class="project-visual reveal">
-        <video class="project-video" autoplay muted loop playsinline
-               src="videos/enterprise.mp4"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        </video>
-        <div class="project-visual-inner" style="display:none">
-          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" opacity="0.5">
-            <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
-          </svg>
-          <span class="placeholder-text">视频加载中 · 企业管理系统</span>
+        <div class="video-wrapper">
+          <video class="project-video" autoplay muted loop playsinline src="videos/enterprise.mp4"></video>
+          <div class="video-veil">
+            <div class="veil-ring"></div>
+            <span class="veil-text">视频加载中</span>
+          </div>
         </div>
       </div>
       <div class="project-info reveal">
@@ -934,15 +969,12 @@ h3 {
     <!-- Project 2: Grade Tool -->
     <div class="project-hero reveal">
       <div class="project-visual reveal">
-        <video class="project-video" autoplay muted loop playsinline
-               src="videos/grade.mp4"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        </video>
-        <div class="project-visual-inner" style="display:none">
-          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" opacity="0.5">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
-          </svg>
-          <span class="placeholder-text">视频加载中 · 成绩统计工具</span>
+        <div class="video-wrapper">
+          <video class="project-video" autoplay muted loop playsinline src="videos/grade.mp4"></video>
+          <div class="video-veil">
+            <div class="veil-ring"></div>
+            <span class="veil-text">视频加载中</span>
+          </div>
         </div>
       </div>
       <div class="project-info reveal">
@@ -971,15 +1003,12 @@ h3 {
     <!-- Project 3: RAG MAX -->
     <div class="project-hero reveal">
       <div class="project-visual reveal">
-        <video class="project-video" autoplay muted loop playsinline
-               src="videos/rag.mp4"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        </video>
-        <div class="project-visual-inner" style="display:none">
-          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" opacity="0.5">
-            <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
-          </svg>
-          <span class="placeholder-text">视频加载中 · RAG知识库MAX</span>
+        <div class="video-wrapper">
+          <video class="project-video" autoplay muted loop playsinline src="videos/rag.mp4"></video>
+          <div class="video-veil">
+            <div class="veil-ring"></div>
+            <span class="veil-text">视频加载中</span>
+          </div>
         </div>
       </div>
       <div class="project-info reveal">
@@ -1008,15 +1037,12 @@ h3 {
     <!-- Project 4: Coze Food System -->
     <div class="project-hero reveal">
       <div class="project-visual reveal">
-        <video class="project-video" autoplay muted loop playsinline
-               src="videos/food.mp4"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        </video>
-        <div class="project-visual-inner" style="display:none">
-          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" opacity="0.5">
-            <path d="M3 2v7c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2V2"/><path d="M17 9v8a4 4 0 0 1-4 4h0"/><circle cx="9" cy="19" r="2"/>
-          </svg>
-          <span class="placeholder-text">视频加载中 · 连锁餐饮智能管理系统</span>
+        <div class="video-wrapper">
+          <video class="project-video" autoplay muted loop playsinline src="videos/food.mp4"></video>
+          <div class="video-veil">
+            <div class="veil-ring"></div>
+            <span class="veil-text">视频加载中</span>
+          </div>
         </div>
       </div>
       <div class="project-info reveal">
@@ -1210,6 +1236,27 @@ h3 {
       });
       ticking = true;
     }
+  });
+
+  // --- Video veil: unveil when loaded ---
+  document.querySelectorAll('.project-video').forEach(video => {
+    const wrapper = video.parentElement;
+    const veil = wrapper.querySelector('.video-veil');
+    if (!veil) return;
+
+    video.addEventListener('canplaythrough', () => {
+      veil.classList.add('unveiled');
+    });
+
+    // Fallback: if video already loaded enough to play before event bound
+    if (video.readyState >= 3) {
+      veil.classList.add('unveiled');
+    }
+
+    video.addEventListener('error', () => {
+      veil.querySelector('.veil-ring').style.display = 'none';
+      veil.querySelector('.veil-text').textContent = '视频暂未加载';
+    });
   });
 })();
 </script>
