@@ -1070,12 +1070,12 @@ h3 {
       <div class="cap-card reveal">
         <div class="cap-number">02</div>
         <h3>技术落地</h3>
-        <p>独立完成4个AI产品的全栈开发。从RAG架构选型到OCR降级链路，从零依赖Node.js后端到PySide6桌面应用——AI不是调API，是可交付的产品。</p>
+        <p>独立完成AI产品的全栈开发。从RAG架构选型到OCR降级链路，从零依赖Node.js后端到PySide6桌面应用——AI不是调API，是可交付的产品。</p>
       </div>
       <div class="cap-card reveal">
         <div class="cap-number">03</div>
-        <h3>UI设计</h3>
-        <p>3年专业平面设计功底 + 对桌面端/Web端UI规范的深度理解。擅长Win11 Fluent Design、极简科技风等现代设计语言——从信息架构到像素级落地，一个人就能交付好看且好用的产品界面。</p>
+        <h3>设计能力</h3>
+        <p>3年平面设计经验，项目执行中能独立完成界面设计——从原型到视觉呈现，不需要等设计师也能交付完整的产品界面，保证项目推进效率。</p>
       </div>
     </div>
   </div>
@@ -1095,13 +1095,13 @@ h3 {
         <span class="flagship-tag">★ 旗舰项目</span>
         <h3 style="font-size: clamp(2rem, 4vw, 3rem);">CodeClean</h3>
         <p class="project-desc" style="font-size: 1.1rem; max-width: 720px;">
-          全球首个能自我进化的 AI 代码清理平台 —— 清理子系统负责"做手术"，学习子系统负责"不再犯同样的错"。
+          一套把安全做到极致的 AI 代码清理平台 —— 清理子系统负责"做手术"，学习子系统负责"不再犯同样的错"。
         </p>
 
         <!-- Agent panels -->
         <div class="agent-panels">
           <div class="agent-panel">
-            <div class="agent-panel-label">清理端 · 9 Agent</div>
+            <div class="agent-panel-label">清理端 · 7 Agent</div>
             <h4>制衡体系</h4>
             <p class="agent-flow">图谱 ≠ 规划 ≠ 执行<br>校验 ≠ 反思 ≠ 修复</p>
             <p class="agent-motto">"做的人不审，审的人不做"</p>
@@ -1121,9 +1121,9 @@ h3 {
 
         <!-- Safety lines -->
         <div class="safety-lines">
-          <div class="safety-line"><strong>第一线 · 沙箱隔离</strong><br>原始项目只读，所有操作在副本</div>
-          <div class="safety-line"><strong>第二线 · 不删除只隔离</strong><br>文件移入 .quarantine/，随时回迁</div>
-          <div class="safety-line"><strong>第三线 · 回归校验</strong><br>SHA256 文件清单 + 测试对比，异常自动回滚</div>
+          <div class="safety-line"><strong>第一线 · 沙箱副本</strong><br>原始项目只读，全部操作在临时副本中执行</div>
+          <div class="safety-line"><strong>第二线 · 只隔离不删除</strong><br>文件移入 .quarantine/，SHA256 溯源，一条命令回迁</div>
+          <div class="safety-line"><strong>第三线 · 基线回归校验</strong><br>SHA256 清单 + 测试对比，异常自动回滚整个批次</div>
         </div>
       </div>
     </div>
@@ -1142,23 +1142,23 @@ h3 {
       <div class="project-info reveal">
         <p class="project-number">技术深度</p>
         <ul class="project-highlights">
-          <li>Tree-sitter AST 解析 Python/JS/TS，精确提取 import 引用 + 框架路由检测</li>
-          <li>L1/L2/L3 三级风险 + 置信度自动分流，高置信度跳过人工直接执行</li>
-          <li>FATAL/RETRY/DEGRADE 三级异常处理，单文件解析失败不会让整个任务崩溃</li>
-          <li>Harvester→Evaluator→Validator→Integrator→Monitor 五阶段学习闭环</li>
-          <li>零 Docker 依赖，Git Worktree + 临时目录 + subprocess 进程隔离，Windows 原生运行</li>
-          <li>SqliteSaver 持久化，进程重启后从断点继续（V3.1）</li>
+          <li>Tree-sitter AST 解析 + 框架感知检测：识别 FastAPI/Django/Vue 动态路由，从源头降低误删率</li>
+          <li>L1/L2/L3 三级风险分流：L3 高置信度自动执行，L2 暂停人工审批（LangGraph 断点恢复）</li>
+          <li>FATAL/RETRY/DEGRADE 三级异常韧性：单文件失败自动重试，学习系统错误永不阻断清理</li>
+          <li>十节点 LangGraph DAG 编排 + SqliteSaver 持久化，进程重启从断点续跑</li>
+          <li>零 Docker 依赖：临时目录 + subprocess 进程隔离，Windows 原生运行</li>
+          <li>五阶段学习闭环：Harvester → Evaluator → Validator → Integrator → Monitor</li>
         </ul>
         <div class="project-tags">
           <span class="tag">Python</span>
-          <span class="tag">15 Agent</span>
+          <span class="tag">LangGraph</span>
+          <span class="tag">12 Agent</span>
           <span class="tag">Tree-sitter</span>
-          <span class="tag">Streamlit</span>
           <span class="tag">沙箱隔离</span>
-          <span class="tag">自我进化</span>
+          <span class="tag">学习闭环</span>
         </div>
         <p style="color: var(--text-tertiary); font-size: 0.8rem; margin-top: 12px;">
-          工程规模：5000+行 Python · 36个模块 · 12个Prompt模板 · 85项自动化测试 · 6个真实项目验证
+          工程规模：5000行 Python · 36个模块 · 12个Agent · 12个Prompt模板 · 85项自动化测试
         </p>
       </div>
     </div>
@@ -1362,7 +1362,7 @@ h3 {
           📞 130 3283 9382
         </a>
       </div>
-      <p class="contact-location">📍 重庆 · 成都 · 8.20后到岗</p>
+      <p class="contact-location">📍 重庆 · 成都 · 随时到岗</p>
     </div>
   </div>
 </section>
