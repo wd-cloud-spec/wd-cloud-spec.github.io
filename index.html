@@ -416,6 +416,99 @@ h3 {
   padding: var(--spacing-lg) 0 var(--spacing-2xl);
 }
 
+/* --- Flagship project (Tier 1) --- */
+.flagship {
+  border-top: 1px solid var(--accent-muted);
+  padding-top: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+}
+.flagship-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  color: var(--accent-strong);
+  border: 1px solid var(--accent-muted);
+  padding: 3px 10px;
+  border-radius: 100px;
+  margin-bottom: var(--spacing-sm);
+}
+.agent-panels {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: var(--spacing-md);
+  margin: var(--spacing-md) 0;
+  align-items: center;
+}
+.agent-panel {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 24px 28px;
+}
+.agent-panel-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.agent-panel h4 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  margin-bottom: 6px;
+}
+.agent-panel .agent-flow {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+.agent-panel .agent-motto {
+  font-size: 0.85rem;
+  color: var(--sage);
+  font-style: italic;
+  margin-top: 10px;
+}
+.agent-divider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-tertiary);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+.agent-divider-line {
+  width: 1px;
+  height: 24px;
+  background: var(--accent-muted);
+}
+
+.safety-lines {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-md);
+}
+.safety-line {
+  flex: 1;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+.safety-line strong {
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+}
+
 .project-hero {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -560,7 +653,7 @@ h3 {
 }
 
 /* ============================================
-   Scene 4: Secondary Projects
+   Scene 4: Flagship Project (Tier 1)
    ============================================ */
 .projects-secondary {
   padding: 0 0 var(--spacing-2xl);
@@ -692,6 +785,54 @@ h3 {
   content: '↳ ';
   color: var(--text-tertiary);
   font-weight: 400;
+}
+
+/* ============================================
+   Scene 6: Timeline
+   ============================================ */
+.wip-section {
+  padding: 0 0 var(--spacing-2xl);
+}
+.wip-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--spacing-sm);
+}
+.wip-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 24px 28px;
+  transition: all var(--transition-smooth);
+  cursor: default;
+}
+.wip-card:hover {
+  background: var(--bg-card-hover);
+  transform: translateY(-1px);
+}
+.wip-card h4 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+.wip-card p {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+.wip-card-placeholder {
+  background: transparent;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-md);
+  padding: 24px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-tertiary);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
 }
 
 /* ============================================
@@ -829,6 +970,22 @@ h3 {
   .project-hero:nth-child(even) > * {
     direction: ltr;
   }
+  .agent-panels {
+    grid-template-columns: 1fr;
+  }
+  .agent-divider {
+    flex-direction: row;
+  }
+  .agent-divider-line {
+    width: 24px;
+    height: 1px;
+  }
+  .safety-lines {
+    flex-direction: column;
+  }
+  .wip-grid {
+    grid-template-columns: 1fr;
+  }
   .project-mini-grid {
     grid-template-columns: 1fr;
   }
@@ -932,6 +1089,80 @@ h3 {
     <span class="section-label reveal">Featured Work</span>
     <h2 class="reveal">AI 项目案例</h2>
 
+    <!-- ★ Project 0: CodeClean (Flagship) -->
+    <div class="flagship reveal">
+      <div class="project-info" style="max-width:100%">
+        <span class="flagship-tag">★ 旗舰项目</span>
+        <h3 style="font-size: clamp(2rem, 4vw, 3rem);">CodeClean</h3>
+        <p class="project-desc" style="font-size: 1.1rem; max-width: 720px;">
+          全球首个能自我进化的 AI 代码清理平台 —— 清理子系统负责"做手术"，学习子系统负责"不再犯同样的错"。
+        </p>
+
+        <!-- Agent panels -->
+        <div class="agent-panels">
+          <div class="agent-panel">
+            <div class="agent-panel-label">清理端 · 9 Agent</div>
+            <h4>制衡体系</h4>
+            <p class="agent-flow">图谱 ≠ 规划 ≠ 执行<br>校验 ≠ 反思 ≠ 修复</p>
+            <p class="agent-motto">"做的人不审，审的人不做"</p>
+          </div>
+          <div class="agent-divider">
+            <div class="agent-divider-line"></div>
+            <span>数据驱动</span>
+            <div class="agent-divider-line"></div>
+          </div>
+          <div class="agent-panel">
+            <div class="agent-panel-label">学习端 · 5 Agent</div>
+            <h4>进化闭环</h4>
+            <p class="agent-flow">采集 → 评估 → 验证<br>→ 固化 → 监控</p>
+            <p class="agent-motto">"错了就学，学了就固"</p>
+          </div>
+        </div>
+
+        <!-- Safety lines -->
+        <div class="safety-lines">
+          <div class="safety-line"><strong>第一线 · 沙箱隔离</strong><br>原始项目只读，所有操作在副本</div>
+          <div class="safety-line"><strong>第二线 · 不删除只隔离</strong><br>文件移入 .quarantine/，随时回迁</div>
+          <div class="safety-line"><strong>第三线 · 回归校验</strong><br>SHA256 文件清单 + 测试对比，异常自动回滚</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ★ Project 0 video row -->
+    <div class="project-hero reveal" style="border-top: none; padding-top: 0;">
+      <div class="project-visual reveal">
+        <div class="video-wrapper">
+          <video class="project-video" autoplay muted loop playsinline src="videos/codeclean.mp4"></video>
+          <div class="video-veil">
+            <div class="veil-ring"></div>
+            <span class="veil-text">视频加载中</span>
+          </div>
+        </div>
+      </div>
+      <div class="project-info reveal">
+        <p class="project-number">技术深度</p>
+        <ul class="project-highlights">
+          <li>Tree-sitter AST 解析 Python/JS/TS，精确提取 import 引用 + 框架路由检测</li>
+          <li>L1/L2/L3 三级风险 + 置信度自动分流，高置信度跳过人工直接执行</li>
+          <li>FATAL/RETRY/DEGRADE 三级异常处理，单文件解析失败不会让整个任务崩溃</li>
+          <li>Harvester→Evaluator→Validator→Integrator→Monitor 五阶段学习闭环</li>
+          <li>零 Docker 依赖，Git Worktree + 临时目录 + subprocess 进程隔离，Windows 原生运行</li>
+          <li>SqliteSaver 持久化，进程重启后从断点继续（V3.1）</li>
+        </ul>
+        <div class="project-tags">
+          <span class="tag">Python</span>
+          <span class="tag">15 Agent</span>
+          <span class="tag">Tree-sitter</span>
+          <span class="tag">Streamlit</span>
+          <span class="tag">沙箱隔离</span>
+          <span class="tag">自我进化</span>
+        </div>
+        <p style="color: var(--text-tertiary); font-size: 0.8rem; margin-top: 12px;">
+          工程规模：5000+行 Python · 36个模块 · 12个Prompt模板 · 85项自动化测试 · 6个真实项目验证
+        </p>
+      </div>
+    </div>
+
     <!-- Project 1: Enterprise System -->
     <div class="project-hero reveal">
       <div class="project-visual reveal">
@@ -944,7 +1175,7 @@ h3 {
         </div>
       </div>
       <div class="project-info reveal">
-        <p class="project-number">01 / 全栈 + AI 集成</p>
+        <p class="project-number">02 / 全栈 + AI 集成</p>
         <h3>企业管理系统</h3>
         <p class="project-desc">
           一套面向中小企业的AI全栈管理平台，集成OA、CRM、WMS三大子系统，
@@ -978,7 +1209,7 @@ h3 {
         </div>
       </div>
       <div class="project-info reveal">
-        <p class="project-number">02 / AI × 教育垂直场景</p>
+        <p class="project-number">03 / AI × 教育垂直场景</p>
         <h3>成绩统计工具</h3>
         <p class="project-desc">
           一款面向中学教师的桌面端成绩管理应用。AI视觉识别让教师从手工录入中解放，
@@ -1012,7 +1243,7 @@ h3 {
         </div>
       </div>
       <div class="project-info reveal">
-        <p class="project-number">03 / RAG 全链路实践</p>
+        <p class="project-number">04 / RAG 全链路实践</p>
         <h3>RAG 知识库 MAX</h3>
         <p class="project-desc">
           面向招投标、法务、研究的私有化桌面端RAG系统。17种模块化RAG策略、6家国产大模型接入、
@@ -1034,36 +1265,28 @@ h3 {
       </div>
     </div>
 
-    <!-- Project 4: Coze Food System -->
-    <div class="project-hero reveal">
-      <div class="project-visual reveal">
-        <div class="video-wrapper">
-          <video class="project-video" autoplay muted loop playsinline src="videos/food.mp4"></video>
-          <div class="video-veil">
-            <div class="veil-ring"></div>
-            <span class="veil-text">视频加载中</span>
-          </div>
-        </div>
-      </div>
-      <div class="project-info reveal">
-        <p class="project-number">04 / 低代码 AI 平台搭建</p>
-        <h3>连锁餐饮智能管理系统</h3>
-        <p class="project-desc">
-          基于 Coze 平台搭建的连锁餐饮SaaS工具，覆盖仓储统计、客户画像分析、会员体系、
-          多分店数据看板——验证了低代码AI平台快速搭建行业应用的能力。
-        </p>
-        <ul class="project-highlights">
-          <li>基于 Coze 平台的 Agent 编排与工作流设计，零代码搭建业务逻辑</li>
-          <li>仓储统计模块：多仓库库存追踪与低库存预警</li>
-          <li>客户画像分析：消费行为聚类与分群运营建议</li>
-          <li>多分店数据看板：跨门店指标对比与趋势分析</li>
-        </ul>
+  </div>
+</section>
+
+<!-- ============================================
+     Scene 4: WIP Projects (Tier 3)
+     ============================================ -->
+<section class="wip-section">
+  <div class="container">
+    <span class="section-label reveal">Work in Progress</span>
+    <h2 class="reveal" style="font-size: clamp(1.8rem, 3vw, 2.4rem);">正在开发</h2>
+    <div class="wip-grid">
+      <div class="wip-card reveal">
+        <h4>连锁餐饮智能管理系统</h4>
+        <p>基于 Coze 平台搭建的餐饮SaaS工具，覆盖仓储统计、客户画像分析、会员体系、多分店数据看板。</p>
         <div class="project-tags">
           <span class="tag">Coze</span>
           <span class="tag">Agent</span>
           <span class="tag">数据看板</span>
-          <span class="tag">会员体系</span>
         </div>
+      </div>
+      <div class="wip-card-placeholder reveal">
+        更多项目即将上线
       </div>
     </div>
   </div>
