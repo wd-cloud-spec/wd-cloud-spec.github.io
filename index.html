@@ -834,6 +834,27 @@ h3 {
   font-size: 0.75rem;
   letter-spacing: 0.06em;
 }
+.wip-card-video {
+  grid-column: span 2;
+  display: flex;
+  flex-direction: column;
+}
+.wip-video {
+  position: relative;
+  aspect-ratio: 16/9;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  margin-bottom: 14px;
+  border: 1px solid var(--border);
+  background: var(--bg-secondary);
+}
+.wip-video .project-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
 /* ============================================
    Scene 6: Contact
@@ -985,6 +1006,9 @@ h3 {
   }
   .wip-grid {
     grid-template-columns: 1fr;
+  }
+  .wip-card-video {
+    grid-column: span 1;
   }
   .project-mini-grid {
     grid-template-columns: 1fr;
@@ -1306,40 +1330,6 @@ h3 {
       </div>
     </div>
 
-    <!-- Project 3: RAG MAX -->
-    <div class="project-hero reveal">
-      <div class="project-visual reveal">
-        <div class="video-wrapper">
-          <video class="project-video" autoplay muted loop playsinline src="videos/rag.mp4"></video>
-          <div class="video-veil">
-            <div class="veil-ring"></div>
-            <span class="veil-text">视频加载中</span>
-          </div>
-        </div>
-      </div>
-      <div class="project-info reveal">
-        <p class="project-number">03 / RAG 全链路实践</p>
-        <h3>RAG 知识库 MAX</h3>
-        <p class="project-desc">
-          面向招投标、法务、研究的私有化桌面端RAG系统。17种模块化RAG策略、6家国产大模型接入、
-          硬件自适应量化——对RAG全链路从理论到工程的深度实践。
-        </p>
-        <ul class="project-highlights">
-          <li>17种RAG策略分三层架构：切分组6选1 + 增强组6选多 + 高阶组5选多，实时冲突校验</li>
-          <li>bge-m3 本地Embedding + bge-reranker 精排，向量永久不变，仅增量重建索引结构</li>
-          <li>离线模式自动降级：CRAG→Self-RAG、HyDE→语义检索、GraphRAG→分层索引</li>
-          <li>AES-256 全数据加密，PyQt6 桌面端，支持暗色/亮色双模</li>
-        </ul>
-        <div class="project-tags">
-          <span class="tag">Python</span>
-          <span class="tag">bge-m3</span>
-          <span class="tag">GraphRAG</span>
-          <span class="tag">PyQt6</span>
-          <span class="tag">AES-256</span>
-        </div>
-      </div>
-    </div>
-
   </div>
 </section>
 
@@ -1351,6 +1341,34 @@ h3 {
     <span class="section-label reveal">Work in Progress</span>
     <h2 class="reveal" style="font-size: clamp(1.8rem, 3vw, 2.4rem);">正在开发</h2>
     <div class="wip-grid">
+      <div class="wip-card reveal">
+        <h4>星河班务工作台</h4>
+        <p>本地优先的班主任工作台：班级总览、快速考勤、学生档案、备课中心、家校沟通、数据周报。正在开发成绩统计模块，与桌面端成绩工具数据互通。</p>
+        <div class="project-tags">
+          <span class="tag">Next.js</span>
+          <span class="tag">React</span>
+          <span class="tag">PWA</span>
+          <span class="tag">开源</span>
+        </div>
+      </div>
+      <div class="wip-card wip-card-video reveal">
+        <div class="wip-video">
+          <video class="project-video" autoplay muted loop playsinline src="videos/rag.mp4"></video>
+          <div class="video-veil">
+            <div class="veil-ring"></div>
+            <span class="veil-text">视频加载中</span>
+          </div>
+        </div>
+        <h4>RAG 知识库 MAX</h4>
+        <p>面向招投标、法务、研究的私有化桌面端RAG系统。17种模块化RAG策略、6家国产大模型接入、硬件自适应量化——对RAG全链路的深度实践。</p>
+        <div class="project-tags">
+          <span class="tag">Python</span>
+          <span class="tag">bge-m3</span>
+          <span class="tag">GraphRAG</span>
+          <span class="tag">PyQt6</span>
+          <span class="tag">AES-256</span>
+        </div>
+      </div>
       <div class="wip-card reveal">
         <h4>连锁餐饮智能管理系统</h4>
         <p>基于 Coze 平台搭建的餐饮SaaS工具，覆盖仓储统计、客户画像分析、会员体系、多分店数据看板。</p>
