@@ -69,15 +69,13 @@ def section_title(doc, text):
     return p
 
 
-def project_block(doc, name, tagline, bullets, tags, star=False):
-    """项目经历块：项目名 + 一句话 + 3条bullet + 标签行。"""
-    # 项目名 + 标签
+def project_block(doc, name, tagline, bullets, tags, star=False, scale_note=None):
+    """项目经历块：项目名 + 一句话 + bullet + 标签行。"""
+    # 项目名
     p = para(doc, space_before=8, space_after=2, line=1.2)
     title = ("★ " if star else "") + name
     r = p.add_run(title)
-    set_font(r, size=10.5, bold=True, color=COLOR_TEXT)
-    if star:
-        r.font.color.rgb = COLOR_ACCENT
+    set_font(r, size=10.5, bold=True, color=COLOR_ACCENT if star else COLOR_TEXT)
     # 一句话
     para(doc, tagline, size=9.5, color=COLOR_SUB, space_after=2, line=1.3)
     # bullets
@@ -92,9 +90,11 @@ def project_block(doc, name, tagline, bullets, tags, star=False):
         set_font(r, size=9.5, color=COLOR_TEXT)
     # 标签行
     if tags:
-        p = para(doc, space_before=2, space_after=6, line=1.2)
+        p = para(doc, space_before=2, space_after=2, line=1.2)
         r = p.add_run("  |  ".join(tags))
         set_font(r, size=8.5, color=COLOR_TAG, italic=True)
+    if scale_note:
+        para(doc, scale_note, size=8.5, color=COLOR_TAG, space_after=6, line=1.2)
 
 
 def job_block(doc, period, company_role, desc_lines):
@@ -129,17 +129,17 @@ sec.right_margin = Cm(1.8)
 
 # ============ 头部 ============
 para(doc, "王栋", size=22, bold=True, space_after=2, line=1.1)
-para(doc, "AI产品构建者  ·  能独立走通商业闭环的AI应用全栈搭建", size=11,
+para(doc, "AI产品构建者  ·  如何用AI去提高生产效率", size=11,
      color=COLOR_ACCENT, space_after=4, line=1.2)
 
-para(doc, "📧 1252395926@qq.com   📞 130 3283 9382   🔗 gitee.com/scyilang_0   🌐 wd-cloud-spec.github.io",
+para(doc, "📧 1252395926@qq.com   📞 130 3283 9382   🔗 github.com/wd-cloud-spec   🔗 gitee.com/scyilang_0",
      size=9, color=COLOR_SUB, space_after=2, line=1.2)
 para(doc, "📍 重庆 · 成都  ·  随时到岗  ·  30岁  ·  电子科技大学（985）本科",
      size=9, color=COLOR_SUB, space_after=8, line=1.2)
 
 # ============ 一句话定位 ============
 section_title(doc, "一句话定位")
-para(doc, "7年跨界：平面设计3年（审美与用户体验）→ B端产品经理1年（企业痛点与方案输出）→ 研学创业3年（从0到1的完整商业闭环，近百场交付、零安全事故）→ 独立构建4个AI产品（把大模型能力变成可交付、可变现的应用）。",
+para(doc, "7年跨界：平面设计3年（审美与用户体验）→ B端产品经理1年（企业痛点与方案输出）→ 研学创业3年（从0到1的完整商业闭环，近百场交付、零安全事故）→ 独立构建多个AI产品（把大模型能力变成可交付、可变现的应用）。",
      size=10, color=COLOR_TEXT, space_after=4, line=1.35)
 
 # ============ 核心能力（三栏表格）============
@@ -151,8 +151,8 @@ table.autofit = True
 
 caps = [
     ("商业闭环", "创业3年，独立完成产品研发、渠道拓客、商务谈判、交付回款、客户维护全链路。会算账、能控本、懂风控。"),
-    ("技术落地", "独立完成AI产品全栈开发：Python/Node.js/PySide6/Electron，RAG选型、OCR降级链、多Agent编排均有实战。"),
-    ("设计能力", "平面设计3年，项目执行中可独立完成界面设计与视觉物料，无需等待设计师，保证交付完整性。"),
+    ("技术落地", "独立完成AI产品全栈开发：Python/Node.js/JavaScript/PySide6，RAG选型、OCR降级链、多Agent编排均有实战。"),
+    ("设计能力", "平面设计3年，项目执行中可独立完成界面设计与视觉物料，创造出更符合年轻人使用的AI工具。"),
 ]
 for i, (title, desc) in enumerate(caps):
     cell = table.cell(0, i)
@@ -171,16 +171,45 @@ for i, (title, desc) in enumerate(caps):
 section_title(doc, "AI 项目经历")
 
 project_block(
-    doc, "CodeClean — AI 代码清理平台（旗舰项目）",
-    "一套把安全做到极致的代码清理平台：清理端7 Agent\"做手术\"，学习端5 Agent\"不再犯同样的错\"。",
+    doc, "DSH Mobile — 手机远程指挥台（旗舰项目）",
+    "DeepSeek Harness 上线48小时内完成插件开发，用DSH让DSH更方便使用：手机实时镜像 PC 端 AI Agent 工作流，远程发言、审批放行。",
     [
-        "安全架构：沙箱副本只读执行 + .quarantine/ 只隔离不删除（SHA256溯源，一条命令回迁）+ 基线回归校验，异常自动回滚整个批次",
-        "Tree-sitter AST 解析 + 框架感知检测（FastAPI/Django/Vue 动态路由），L1/L2/L3 三级风险分流，L2 暂停人工审批",
-        "LangGraph 十节点 DAG 编排 + SqliteSaver 断点续跑，FATAL/RETRY/DEGRADE 三级异常韧性，零Docker、Windows原生",
-        "工程规模：5000行 Python · 36个模块 · 12个Agent · 12个Prompt模板 · 85项自动化测试全过",
+        "双面插件架构：宿主进程端 + 浏览器UI端同一包分发，~2,650行核心代码，一键安装脚本，MIT开源",
+        "安全桥接：14路径白名单代理 + 旋转Token + 本机Origin校验，恶意页面无法跨站攻击",
+        "原生 AbortSignal 三级捕获：从手机远程停止 PC 端 Agent 任务（穿透沙箱伪造实现）",
+        "消息队列 + 90秒TTL：离线会话唤醒后自动送达；手机与PC对审批/问答首答优先",
+        "零外部资源单文件UI：深色指挥台设计（墨蓝+琥珀+青），notched屏安全区适配",
     ],
-    ["Python", "LangGraph", "12 Agent", "Tree-sitter", "沙箱隔离", "学习闭环"],
+    ["DeepSeek Harness", "SSE", "移动端", "安全桥接", "Agent控制"],
     star=True,
+    scale_note="工程规模：~2,650行 · 双面插件 · 单文件移动端UI · 12条工程踩坑记录",
+)
+
+project_block(
+    doc, "工作台与统计工具 — AI×教育桌面应用（旗舰项目）",
+    "现代风格设计完整工作台：AI视觉识别让教师从手工录入中解放，双击即用的桌面工具。",
+    [
+        "Qwen-VL 视觉大模型识别成绩表格→结构化JSON，支持多图合并按姓名归并",
+        "4级OCR降级链路（Qwen-VL→腾讯云→RapidOCR→PaddleOCR）逐级兜底，有网用AI、无网照样干",
+        "PySide6 + Fluent Design（Win11风格）界面、视频动态背景，教师零学习成本",
+        "PyInstaller打包.exe，SQLite本地存储，数据不离开学校；4类图表分析+丢分关键词检索",
+    ],
+    ["Python", "Qwen-VL", "PySide6", "Fluent Design", "SQLite"],
+    star=True,
+    scale_note="交付形态：单文件.exe · 教师双击即用 · 完整使用说明与培训PPT",
+)
+
+project_block(
+    doc, "CodeClean — AI 代码清理平台",
+    "一套把安全做到极致的 AI 代码清理平台：帮助不懂代码的人去检查冗余代码文件。清理端 7 Agent\"做手术\"，学习端 5 Agent\"不再犯同样的错\"。",
+    [
+        "沙箱副本只读执行 + .quarantine/ 只隔离不删除 + 基线回归校验，异常自动回滚整个批次",
+        "Tree-sitter AST + 框架感知检测（FastAPI/Django/Vue 动态路由），从源头降低误删率",
+        "L1/L2/L3 三级风险分流，L2 暂停人工审批（LangGraph checkpoint 断点恢复）",
+        "十节点 DAG 编排 + SqliteSaver 断点续跑，FATAL/RETRY/DEGRADE 三级异常韧性",
+    ],
+    ["Python", "LangGraph", "12 Agent", "Tree-sitter", "沙箱隔离"],
+    scale_note="工程规模：5000行 Python · 36个模块 · 85项自动化测试全过",
 )
 
 project_block(
@@ -195,19 +224,8 @@ project_block(
 )
 
 project_block(
-    doc, "成绩统计工具 — AI×教育垂直场景桌面应用",
-    "面向中学教师的桌面端成绩管理：AI视觉识别让教师从手工录入中解放，有网无网都能用。",
-    [
-        "Qwen-VL 视觉大模型识别成绩表格→结构化JSON，支持多图合并按姓名归并；图像预处理流水线提升低质量照片识别率",
-        "4级OCR降级链路（Qwen-VL→腾讯云→RapidOCR→PaddleOCR）逐级兜底，断网可用",
-        "PySide6 + Fluent Design（Win11风格）界面，PyInstaller打包.exe，SQLite本地存储，双击即用",
-    ],
-    ["Python", "Qwen-VL", "PySide6", "OCR Pipeline", "SQLite"],
-)
-
-project_block(
     doc, "RAG知识库MAX — 私有化桌面端RAG系统",
-    "面向招投标/法务/研究的本地知识库：17种模块化RAG策略、6家国产大模型、全数据AES-256加密。",
+    "面向招投标、法务、研究的本地知识库：17种模块化RAG策略、6家国产大模型、全数据AES-256加密。",
     [
         "17种RAG策略三层架构（切分组6选1+增强组6选多+高阶组5选多），实时冲突校验，智能/专家双模式",
         "bge-m3本地Embedding+bge-reranker精排，向量永久不变、仅增量重建；离线模式自动降级（CRAG→Self-RAG等）",
@@ -254,7 +272,7 @@ para(doc, "电子科技大学（985/211） · 电波传播与天线专业 · 本
 
 # ============ 附加信息 ============
 section_title(doc, "附加信息")
-para(doc, "个人主页：wd-cloud-spec.github.io（AI项目视频演示）  ·  随时到岗  ·  目标城市：重庆、成都",
+para(doc, "个人主页：wd-cloud-spec.github.io（AI项目视频演示）  ·  GitHub：github.com/wd-cloud-spec  ·  随时到岗  ·  目标城市：重庆、成都",
      size=9.5, color=COLOR_SUB, space_after=2, line=1.3)
 
 out = "王栋-简历.docx"
