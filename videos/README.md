@@ -2,12 +2,14 @@
 
 请将以下视频文件放入此文件夹：
 
-| 文件名 | 对应项目 |
-|--------|---------|
-| enterprise.mp4 | 企业管理系统 |
-| grade.mp4 | 成绩统计工具 |
-| rag.mp4 | RAG知识库MAX |
-| food.mp4 | 连锁餐饮智能管理系统 |
+| 文件名 | 对应项目 | 状态 |
+|--------|---------|------|
+| dsh-mobile.mp4 | 旗舰01 · DeepSeek Harness Mobile | 待录制 |
+| codeclean.mp4 | 旗舰02 · CodeClean | ✅ |
+| sales-platform.mp4 | 旗舰03 · 铜雀台 × 商单台 | 待录制 |
+| grade.mp4 | 普通01 · 工作台与统计工具 | ✅ |
+| enterprise.mp4 | 普通02 · 企业管理系统 | ✅ |
+| rag.mp4 | 正在开发 · RAG知识库MAX | ✅ |
 
 录制建议：
 - 每个视频 15-30 秒，展示核心操作流程

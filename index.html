@@ -1117,7 +1117,7 @@ h3 {
     <div class="flagship reveal">
       <div class="project-info" style="max-width:100%">
         <span class="flagship-tag">★ 旗舰项目 01</span>
-        <h3 style="font-size: clamp(2rem, 4vw, 3rem);">DSH Mobile</h3>
+        <h3 style="font-size: clamp(2rem, 4vw, 3rem);">DeepSeek Harness Mobile</h3>
         <p class="project-desc" style="font-size: 1.1rem; max-width: 720px;">
           Deepseek Harness 上线48小时内完成插件开发，用DSH让DSH更方便使用。
           手机远程指挥台 —— 随时查看 PC 端 Agent 的工作进度、远程发言、审批放行。
@@ -1187,80 +1187,48 @@ h3 {
       </div>
     </div>
 
-    <!-- ★ Flagship 2: Grade Tool -->
+    <!-- ★ Flagship 2: CodeClean -->
     <div class="flagship reveal">
       <div class="project-info" style="max-width:100%">
         <span class="flagship-tag">★ 旗舰项目 02</span>
-        <h3 style="font-size: clamp(2rem, 4vw, 3rem);">工作台与统计工具</h3>
+        <h3 style="font-size: clamp(2rem, 4vw, 3rem);">CodeClean</h3>
         <p class="project-desc" style="font-size: 1.1rem; max-width: 720px;">
-          现代风格设计完整工作台，AI 视觉识别让教师从手工录入中解放 —— 双击即用的桌面工具。
+          一套把安全做到极致的 AI 代码清理平台：帮助不懂代码的人去检查冗余代码文件。
+          清理端 7 Agent"做手术"，学习端 5 Agent"不再犯同样的错"。
         </p>
 
-        <!-- Dual panels -->
+        <!-- Agent panels -->
         <div class="agent-panels">
           <div class="agent-panel">
-            <div class="agent-panel-label">AI 识别链路</div>
-            <h4>识别能力</h4>
-            <p class="agent-flow">Qwen-VL 视觉表格识别<br>4级OCR降级兜底<br>图像预处理流水线</p>
-            <p class="agent-motto">"有网用AI，无网照样干"</p>
+            <div class="agent-panel-label">清理端 · 7 Agent</div>
+            <h4>制衡体系</h4>
+            <p class="agent-flow">图谱 ≠ 规划 ≠ 执行<br>校验 ≠ 反思 ≠ 修复</p>
+            <p class="agent-motto">"做的人不审，审的人不做"</p>
           </div>
           <div class="agent-divider">
             <div class="agent-divider-line"></div>
-            <span>工程化</span>
+            <span>数据驱动</span>
             <div class="agent-divider-line"></div>
           </div>
           <div class="agent-panel">
-            <div class="agent-panel-label">产品设计</div>
-            <h4>交付体验</h4>
-            <p class="agent-flow">Fluent Design 界面<br>视频动态背景<br>教师零学习成本</p>
-            <p class="agent-motto">"双击即用，不装环境"</p>
+            <div class="agent-panel-label">学习端 · 5 Agent</div>
+            <h4>进化闭环</h4>
+            <p class="agent-flow">采集 → 评估 → 验证<br>→ 固化 → 监控</p>
+            <p class="agent-motto">"错了就学，学了就固"</p>
           </div>
         </div>
 
-        <!-- Highlight lines -->
+        <!-- Safety lines -->
         <div class="safety-lines">
-          <div class="safety-line"><strong>多格式导入</strong><br>Excel / Word / PDF / 图片，多图合并按姓名归并</div>
-          <div class="safety-line"><strong>数据洞察</strong><br>4类图表分析 + 丢分关键词检索，一查即知薄弱点</div>
-          <div class="safety-line"><strong>交付可用性</strong><br>PyInstaller 单文件 .exe，SQLite 本地存储，数据不离开学校</div>
+          <div class="safety-line"><strong>第一线 · 沙箱副本</strong><br>原始项目只读，全部操作在临时副本中执行</div>
+          <div class="safety-line"><strong>第二线 · 只隔离不删除</strong><br>文件移入 .quarantine/，SHA256 溯源，一条命令回迁</div>
+          <div class="safety-line"><strong>第三线 · 基线回归校验</strong><br>SHA256 清单 + 测试对比，异常自动回滚整个批次</div>
         </div>
       </div>
     </div>
 
     <!-- ★ Flagship 2 video row -->
     <div class="project-hero reveal" style="border-top: none; padding-top: 0;">
-      <div class="project-visual reveal">
-        <div class="video-wrapper">
-          <video class="project-video" autoplay muted loop playsinline src="videos/grade.mp4"></video>
-          <div class="video-veil">
-            <div class="veil-ring"></div>
-            <span class="veil-text">视频加载中</span>
-          </div>
-        </div>
-      </div>
-      <div class="project-info reveal">
-        <p class="project-number">技术深度</p>
-        <ul class="project-highlights">
-          <li>Qwen-VL 视觉大模型识别成绩表格 → 结构化JSON，多图合并按姓名归并</li>
-          <li>4级OCR降级：Qwen-VL → 腾讯云 → RapidOCR → PaddleOCR，逐级兜底</li>
-          <li>PySide6 + Fluent-Widgets：Microsoft Fluent Design System，暗色主题默认，Mica 材质</li>
-          <li>内容级重复检测：同名学生+科目+分数全量比对，防止误导入</li>
-          <li>跨页表格合并：列数匹配 + 页距 + 表头启发式，多页成绩表自动拼接</li>
-        </ul>
-        <div class="project-tags">
-          <span class="tag">Python</span>
-          <span class="tag">Qwen-VL</span>
-          <span class="tag">PySide6</span>
-          <span class="tag">Fluent Design</span>
-          <span class="tag">SQLite</span>
-        </div>
-        <p style="color: var(--text-tertiary); font-size: 0.8rem; margin-top: 12px;">
-          交付形态：PyInstaller 打包 .exe · 教师双击即用 · 完整使用说明与培训PPT
-        </p>
-      </div>
-    </div>
-
-    <!-- Project 1: CodeClean -->
-    <div class="project-hero reveal">
       <div class="project-visual reveal">
         <div class="video-wrapper">
           <video class="project-video" autoplay muted loop playsinline src="videos/codeclean.mp4"></video>
@@ -1271,17 +1239,14 @@ h3 {
         </div>
       </div>
       <div class="project-info reveal">
-        <p class="project-number">01 / 多Agent 安全清理</p>
-        <h3>CodeClean</h3>
-        <p class="project-desc">
-          一套把安全做到极致的 AI 代码清理平台：帮助不懂代码的人去检查冗余代码文件。
-          清理端 7 Agent"做手术"，学习端 5 Agent"不再犯同样的错"，做的人不审，审的人不做。
-        </p>
+        <p class="project-number">技术深度</p>
         <ul class="project-highlights">
-          <li>沙箱副本只读执行 + .quarantine/ 只隔离不删除 + SHA256 基线回归校验，异常自动回滚</li>
           <li>Tree-sitter AST + 框架感知检测：识别 FastAPI/Django/Vue 动态路由，从源头降低误删率</li>
-          <li>L1/L2/L3 三级风险分流，L2 暂停人工审批（LangGraph checkpoint 断点恢复）</li>
-          <li>十节点 DAG 编排 + SqliteSaver 断点续跑，FATAL/RETRY/DEGRADE 三级异常韧性</li>
+          <li>L1/L2/L3 三级风险分流：L3 高置信度自动执行，L2 暂停人工审批（LangGraph 断点恢复）</li>
+          <li>FATAL/RETRY/DEGRADE 三级异常韧性：单文件失败自动重试，学习系统错误永不阻断清理</li>
+          <li>十节点 LangGraph DAG 编排 + SqliteSaver 持久化，进程重启从断点续跑</li>
+          <li>零 Docker 依赖：临时目录 + subprocess 进程隔离，Windows 原生运行</li>
+          <li>五阶段学习闭环：Harvester → Evaluator → Validator → Integrator → Monitor</li>
         </ul>
         <div class="project-tags">
           <span class="tag">Python</span>
@@ -1289,10 +1254,119 @@ h3 {
           <span class="tag">12 Agent</span>
           <span class="tag">Tree-sitter</span>
           <span class="tag">沙箱隔离</span>
+          <span class="tag">学习闭环</span>
         </div>
         <p style="color: var(--text-tertiary); font-size: 0.8rem; margin-top: 12px;">
-          工程规模：5000行 Python · 36个模块 · 85项自动化测试全过
+          工程规模：5000行 Python · 36个模块 · 12个Prompt模板 · 85项自动化测试
         </p>
+      </div>
+    </div>
+
+    <!-- ★ Flagship 3: 铜雀台 × 商单台 -->
+    <div class="flagship reveal">
+      <div class="project-info" style="max-width:100%">
+        <span class="flagship-tag">★ 旗舰项目 03</span>
+        <h3 style="font-size: clamp(2rem, 4vw, 3rem);">铜雀台 × 商单台</h3>
+        <p class="project-desc" style="font-size: 1.1rem; max-width: 720px;">
+          AI 销售管理平台双子星：铜雀台管客户，商单台管履约 —— 同一账号体系，数据天然互通，
+          语音助手让"说话"变成录客户、开报价、建订单。
+        </p>
+
+        <!-- Dual panels -->
+        <div class="agent-panels">
+          <div class="agent-panel">
+            <div class="agent-panel-label">铜雀台 · 销售CRM</div>
+            <h4>客户与过程</h4>
+            <p class="agent-flow">客户档案 · 跟进登记<br>漏斗审批 · 话术库<br>数据周报 · 公海回收</p>
+            <p class="agent-motto">"销售在前，商单在后"</p>
+          </div>
+          <div class="agent-divider">
+            <div class="agent-divider-line"></div>
+            <span>数据互通</span>
+            <div class="agent-divider-line"></div>
+          </div>
+          <div class="agent-panel">
+            <div class="agent-panel-label">商单台 · 履约管理</div>
+            <h4>报价到售后</h4>
+            <p class="agent-flow">报价 · 合同 · 回款<br>交付 · 售后<br>匿名分享链接</p>
+            <p class="agent-motto">"签下来的单，跑不丢"</p>
+          </div>
+        </div>
+
+        <!-- Highlight lines -->
+        <div class="safety-lines">
+          <div class="safety-line"><strong>语音助手</strong><br>说话就能录客户、开报价、建订单（讯飞ASR + DeepSeek意图）</div>
+          <div class="safety-line"><strong>数据互通</strong><br>同一 Supabase 账号体系，客户一次录入两边共用</div>
+          <div class="safety-line"><strong>匿名分享</strong><br>报价单生成只读链接，客户免登录查看，信息脱敏</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ★ Flagship 3 video row -->
+    <div class="project-hero reveal" style="border-top: none; padding-top: 0;">
+      <div class="project-visual reveal">
+        <div class="video-wrapper">
+          <video class="project-video" autoplay muted loop playsinline src="videos/sales-platform.mp4"></video>
+          <div class="video-veil">
+            <div class="veil-ring"></div>
+            <span class="veil-text">视频加载中</span>
+          </div>
+        </div>
+      </div>
+      <div class="project-info reveal">
+        <p class="project-number">技术深度</p>
+        <ul class="project-highlights">
+          <li>语音→动作流水线：MediaRecorder → 16kHz PCM 重采样 → 讯飞WS（手写HMAC-SHA256签名）→ DeepSeek 结构化意图 → 前端执行类型化动作</li>
+          <li>50产品目录注入 system prompt，口语化产品名自动映射SKU并计价（实测"高配工位套餐2套"自动计价21,897元）</li>
+          <li>金额/状态一致性由 PostgreSQL RPC 保证，不在前端算账</li>
+          <li>版本化幂等迁移：从2人团队演化到20-50人组织（层级权限 + 公海自动回收）</li>
+          <li>审批门控漏斗：won/lost 回退需审批，stage_logs 审计轨迹</li>
+          <li>Repository 模式：Supabase 云存储 + IndexedDB 本地离线缓存双实现</li>
+        </ul>
+        <div class="project-tags">
+          <span class="tag">Next.js</span>
+          <span class="tag">React</span>
+          <span class="tag">Supabase</span>
+          <span class="tag">DeepSeek</span>
+          <span class="tag">讯飞ASR</span>
+          <span class="tag">PWA</span>
+        </div>
+        <p style="color: var(--text-tertiary); font-size: 0.8rem; margin-top: 12px;">
+          工程规模：两个应用 ~15,000行 · 已部署 Vercel · PWA 可安装 · 真实可上线
+        </p>
+      </div>
+    </div>
+
+    <!-- Project 1: 工作台与统计工具 -->
+    <div class="project-hero reveal">
+      <div class="project-visual reveal">
+        <div class="video-wrapper">
+          <video class="project-video" autoplay muted loop playsinline src="videos/grade.mp4"></video>
+          <div class="video-veil">
+            <div class="veil-ring"></div>
+            <span class="veil-text">视频加载中</span>
+          </div>
+        </div>
+      </div>
+      <div class="project-info reveal">
+        <p class="project-number">01 / AI × 教育垂直场景</p>
+        <h3>工作台与统计工具</h3>
+        <p class="project-desc">
+          现代风格设计完整工作台，AI 视觉识别让教师从手工录入中解放 —— 双击即用的桌面工具。
+        </p>
+        <ul class="project-highlights">
+          <li>Qwen-VL 视觉大模型识别成绩表格 → 结构化JSON，多图合并按姓名归并</li>
+          <li>4级OCR降级：Qwen-VL → 腾讯云 → RapidOCR → PaddleOCR，逐级兜底</li>
+          <li>PySide6 + Fluent Design 界面 + 视频动态背景，教师零学习成本</li>
+          <li>PyInstaller 打包 .exe，SQLite 本地存储，教师无需安装任何环境</li>
+        </ul>
+        <div class="project-tags">
+          <span class="tag">Python</span>
+          <span class="tag">Qwen-VL</span>
+          <span class="tag">PySide6</span>
+          <span class="tag">Fluent Design</span>
+          <span class="tag">SQLite</span>
+        </div>
       </div>
     </div>
 
