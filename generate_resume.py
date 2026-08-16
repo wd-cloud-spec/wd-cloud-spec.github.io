@@ -171,7 +171,7 @@ for i, (title, desc) in enumerate(caps):
 section_title(doc, "AI 项目经历")
 
 project_block(
-    doc, "DSH Mobile — 手机远程指挥台（旗舰项目）",
+    doc, "DeepSeek Harness Mobile — 手机远程指挥台（旗舰项目）",
     "DeepSeek Harness 上线48小时内完成插件开发，用DSH让DSH更方便使用：手机实时镜像 PC 端 AI Agent 工作流，远程发言、审批放行。",
     [
         "双面插件架构：宿主进程端 + 浏览器UI端同一包分发，~2,650行核心代码，一键安装脚本，MIT开源",
@@ -186,30 +186,44 @@ project_block(
 )
 
 project_block(
-    doc, "工作台与统计工具 — AI×教育桌面应用（旗舰项目）",
+    doc, "CodeClean — AI 代码清理平台（旗舰项目）",
+    "一套把安全做到极致的 AI 代码清理平台：帮助不懂代码的人去检查冗余代码文件。清理端 7 Agent\"做手术\"，学习端 5 Agent\"不再犯同样的错\"。",
+    [
+        "三道防线：沙箱副本只读执行 + .quarantine/ 只隔离不删除（SHA256溯源一条命令回迁）+ 基线回归校验自动回滚",
+        "Tree-sitter AST + 框架感知检测（FastAPI/Django/Vue 动态路由），从源头降低误删率",
+        "L1/L2/L3 三级风险分流，L2 暂停人工审批（LangGraph checkpoint 断点恢复）",
+        "十节点 LangGraph DAG 编排 + SqliteSaver 断点续跑，FATAL/RETRY/DEGRADE 三级异常韧性",
+        "五阶段学习闭环：Harvester→Evaluator→Validator→Integrator→Monitor",
+    ],
+    ["Python", "LangGraph", "12 Agent", "Tree-sitter", "沙箱隔离"],
+    star=True,
+    scale_note="工程规模：5000行 Python · 36个模块 · 12个Prompt模板 · 85项自动化测试全过",
+)
+
+project_block(
+    doc, "铜雀台 × 商单台 — AI 销售管理平台（旗舰项目）",
+    "双子星架构：铜雀台管客户（CRM），商单台管履约（报价→合同→回款→交付→售后），同一 Supabase 账号体系数据天然互通；语音助手让\"说话\"变成录客户、开报价、建订单。",
+    [
+        "语音→动作流水线：MediaRecorder→16kHz PCM重采样→讯飞WS（手写HMAC-SHA256签名）→DeepSeek结构化意图→前端执行类型化动作",
+        "50产品目录注入system prompt，口语化产品名自动映射SKU并计价（实测\"高配工位套餐2套\"自动计价21,897元）",
+        "金额/状态一致性由 PostgreSQL RPC 保证；审批门控漏斗（won/lost回退需审批+stage_logs审计）",
+        "版本化幂等迁移：从2人团队演化到20-50人组织（层级权限+公海自动回收）；Repository模式（Supabase云+IndexedDB离线缓存）",
+    ],
+    ["Next.js", "React", "Supabase", "DeepSeek", "讯飞ASR", "PWA"],
+    star=True,
+    scale_note="工程规模：两个应用 ~15,000行 · 已部署 Vercel · PWA可安装 · 真实可上线",
+)
+
+project_block(
+    doc, "成绩统计工具 — AI×教育桌面应用",
     "现代风格设计完整工作台：AI视觉识别让教师从手工录入中解放，双击即用的桌面工具。",
     [
         "Qwen-VL 视觉大模型识别成绩表格→结构化JSON，支持多图合并按姓名归并",
         "4级OCR降级链路（Qwen-VL→腾讯云→RapidOCR→PaddleOCR）逐级兜底，有网用AI、无网照样干",
-        "PySide6 + Fluent Design（Win11风格）界面、视频动态背景，教师零学习成本",
+        "PySide6 + Fluent Design 界面 + 视频动态背景，教师零学习成本",
         "PyInstaller打包.exe，SQLite本地存储，数据不离开学校；4类图表分析+丢分关键词检索",
     ],
     ["Python", "Qwen-VL", "PySide6", "Fluent Design", "SQLite"],
-    star=True,
-    scale_note="交付形态：单文件.exe · 教师双击即用 · 完整使用说明与培训PPT",
-)
-
-project_block(
-    doc, "CodeClean — AI 代码清理平台",
-    "一套把安全做到极致的 AI 代码清理平台：帮助不懂代码的人去检查冗余代码文件。清理端 7 Agent\"做手术\"，学习端 5 Agent\"不再犯同样的错\"。",
-    [
-        "沙箱副本只读执行 + .quarantine/ 只隔离不删除 + 基线回归校验，异常自动回滚整个批次",
-        "Tree-sitter AST + 框架感知检测（FastAPI/Django/Vue 动态路由），从源头降低误删率",
-        "L1/L2/L3 三级风险分流，L2 暂停人工审批（LangGraph checkpoint 断点恢复）",
-        "十节点 DAG 编排 + SqliteSaver 断点续跑，FATAL/RETRY/DEGRADE 三级异常韧性",
-    ],
-    ["Python", "LangGraph", "12 Agent", "Tree-sitter", "沙箱隔离"],
-    scale_note="工程规模：5000行 Python · 36个模块 · 85项自动化测试全过",
 )
 
 project_block(
@@ -221,17 +235,6 @@ project_block(
         "统一认证+RBAC三级权限（17项细粒度权限），Token会话，scrypt密码哈希，可局域网/私有云部署",
     ],
     ["Node.js", "DeepSeek", "Electron", "RBAC", "零依赖"],
-)
-
-project_block(
-    doc, "RAG知识库MAX — 私有化桌面端RAG系统",
-    "面向招投标、法务、研究的本地知识库：17种模块化RAG策略、6家国产大模型、全数据AES-256加密。",
-    [
-        "17种RAG策略三层架构（切分组6选1+增强组6选多+高阶组5选多），实时冲突校验，智能/专家双模式",
-        "bge-m3本地Embedding+bge-reranker精排，向量永久不变、仅增量重建；离线模式自动降级（CRAG→Self-RAG等）",
-        "硬件自适应量化（FP16/8bit/4bit），多密钥轮询+故障自动切换，Token预算管理",
-    ],
-    ["Python", "bge-m3", "GraphRAG", "PyQt6", "AES-256"],
 )
 
 # ============ 工作经历 ============
