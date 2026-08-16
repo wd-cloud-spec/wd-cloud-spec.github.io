@@ -1043,7 +1043,7 @@ h3 {
     <div class="hero-meta reveal reveal-delay-3">
       <span>7年跨界</span>
       <span class="dot"></span>
-      <span>4个AI产品</span>
+      <span>5个AI产品</span>
       <span class="dot"></span>
       <span>重庆 · 成都</span>
     </div>
@@ -1089,47 +1089,155 @@ h3 {
     <span class="section-label reveal">Featured Work</span>
     <h2 class="reveal">AI 项目案例</h2>
 
-    <!-- ★ Project 0: CodeClean (Flagship) -->
+    <!-- ★ Flagship 1: DSH Mobile -->
     <div class="flagship reveal">
       <div class="project-info" style="max-width:100%">
-        <span class="flagship-tag">★ 旗舰项目</span>
-        <h3 style="font-size: clamp(2rem, 4vw, 3rem);">CodeClean</h3>
+        <span class="flagship-tag">★ 旗舰项目 01</span>
+        <h3 style="font-size: clamp(2rem, 4vw, 3rem);">DSH Mobile</h3>
         <p class="project-desc" style="font-size: 1.1rem; max-width: 720px;">
-          一套把安全做到极致的 AI 代码清理平台 —— 清理子系统负责"做手术"，学习子系统负责"不再犯同样的错"。
+          手机远程指挥台 —— 把 AI 编码 Agent 装进口袋，随时查看 PC 端 Agent 的工作进度、远程发言、审批放行。
         </p>
 
-        <!-- Agent panels -->
+        <!-- Dual panels -->
         <div class="agent-panels">
           <div class="agent-panel">
-            <div class="agent-panel-label">清理端 · 7 Agent</div>
-            <h4>制衡体系</h4>
-            <p class="agent-flow">图谱 ≠ 规划 ≠ 执行<br>校验 ≠ 反思 ≠ 修复</p>
-            <p class="agent-motto">"做的人不审，审的人不做"</p>
+            <div class="agent-panel-label">手机端 · 指挥台</div>
+            <h4>实时掌控</h4>
+            <p class="agent-flow">实时镜像 Agent 工作流<br>远程发言 · 审批放行<br>问答接龙 · 断点续跑</p>
+            <p class="agent-motto">"人在外面，活儿不耽误"</p>
           </div>
           <div class="agent-divider">
             <div class="agent-divider-line"></div>
-            <span>数据驱动</span>
+            <span>双向同步</span>
             <div class="agent-divider-line"></div>
           </div>
           <div class="agent-panel">
-            <div class="agent-panel-label">学习端 · 5 Agent</div>
-            <h4>进化闭环</h4>
-            <p class="agent-flow">采集 → 评估 → 验证<br>→ 固化 → 监控</p>
-            <p class="agent-motto">"错了就学，学了就固"</p>
+            <div class="agent-panel-label">PC端 · 安全桥</div>
+            <h4>层层设防</h4>
+            <p class="agent-flow">14路径白名单代理<br>旋转Token · 本机校验<br>恶意页面无法跨站</p>
+            <p class="agent-motto">"能指挥，但不能乱指挥"</p>
           </div>
         </div>
 
-        <!-- Safety lines -->
+        <!-- Highlight lines -->
         <div class="safety-lines">
-          <div class="safety-line"><strong>第一线 · 沙箱副本</strong><br>原始项目只读，全部操作在临时副本中执行</div>
-          <div class="safety-line"><strong>第二线 · 只隔离不删除</strong><br>文件移入 .quarantine/，SHA256 溯源，一条命令回迁</div>
-          <div class="safety-line"><strong>第三线 · 基线回归校验</strong><br>SHA256 清单 + 测试对比，异常自动回滚整个批次</div>
+          <div class="safety-line"><strong>实时同步</strong><br>SSE 流式推送 + 5s 轮询降级，断连自动切换</div>
+          <div class="safety-line"><strong>消息队列 + TTL</strong><br>离线会话唤醒后自动送达，90秒超时丢弃并通知</div>
+          <div class="safety-line"><strong>移动端性能</strong><br>rAF 批处理 + DOM 上限 + 触控感知滚动锁</div>
         </div>
       </div>
     </div>
 
-    <!-- ★ Project 0 video row -->
+    <!-- ★ Flagship 1 video row -->
     <div class="project-hero reveal" style="border-top: none; padding-top: 0;">
+      <div class="project-visual reveal">
+        <div class="video-wrapper">
+          <video class="project-video" autoplay muted loop playsinline src="videos/dsh-mobile.mp4"></video>
+          <div class="video-veil">
+            <div class="veil-ring"></div>
+            <span class="veil-text">视频加载中</span>
+          </div>
+        </div>
+      </div>
+      <div class="project-info reveal">
+        <p class="project-number">技术深度</p>
+        <ul class="project-highlights">
+          <li>双面插件架构：宿主进程端 + 浏览器UI端同一包分发，~2,650行核心代码</li>
+          <li>原生 AbortSignal 三级捕获：从手机远程停止 PC 端 Agent 任务（穿透沙箱伪造实现）</li>
+          <li>首答优先语义：手机与PC对审批/问答拥有同等权力，先答者生效</li>
+          <li>零外部资源单文件 UI：无第三方脚本无字体引用，隐私零泄露</li>
+          <li>深色指挥台设计：墨蓝 + 琥珀 + 青，notched 屏安全区适配</li>
+          <li>12条工程踩坑记录 + 桥接回归测试，冷启动/热重载竞态均有防护</li>
+        </ul>
+        <div class="project-tags">
+          <span class="tag">JavaScript</span>
+          <span class="tag">DeepSeek Harness</span>
+          <span class="tag">SSE</span>
+          <span class="tag">移动端</span>
+          <span class="tag">安全桥接</span>
+          <span class="tag">Agent控制</span>
+        </div>
+        <p style="color: var(--text-tertiary); font-size: 0.8rem; margin-top: 12px;">
+          工程规模：~2,650行 · 双面插件 · 单文件移动端UI · 一键安装脚本 · MIT开源
+        </p>
+      </div>
+    </div>
+
+    <!-- ★ Flagship 2: Grade Tool -->
+    <div class="flagship reveal">
+      <div class="project-info" style="max-width:100%">
+        <span class="flagship-tag">★ 旗舰项目 02</span>
+        <h3 style="font-size: clamp(2rem, 4vw, 3rem);">成绩统计工具</h3>
+        <p class="project-desc" style="font-size: 1.1rem; max-width: 720px;">
+          AI 视觉识别让教师从手工录入中解放 —— Win11 Fluent Design 极简科技风界面，双击即用的桌面工具。
+        </p>
+
+        <!-- Dual panels -->
+        <div class="agent-panels">
+          <div class="agent-panel">
+            <div class="agent-panel-label">AI 识别链路</div>
+            <h4>识别能力</h4>
+            <p class="agent-flow">Qwen-VL 视觉表格识别<br>4级OCR降级兜底<br>图像预处理流水线</p>
+            <p class="agent-motto">"有网用AI，无网照样干"</p>
+          </div>
+          <div class="agent-divider">
+            <div class="agent-divider-line"></div>
+            <span>工程化</span>
+            <div class="agent-divider-line"></div>
+          </div>
+          <div class="agent-panel">
+            <div class="agent-panel-label">产品设计</div>
+            <h4>交付体验</h4>
+            <p class="agent-flow">Fluent Design 界面<br>暗色 Mica 材质<br>教师零学习成本</p>
+            <p class="agent-motto">"双击即用，不装环境"</p>
+          </div>
+        </div>
+
+        <!-- Highlight lines -->
+        <div class="safety-lines">
+          <div class="safety-line"><strong>多格式导入</strong><br>Excel / Word / PDF / 图片，多图合并按姓名归并</div>
+          <div class="safety-line"><strong>数据洞察</strong><br>4类图表分析 + 丢分关键词检索，一查即知薄弱点</div>
+          <div class="safety-line"><strong>交付可用性</strong><br>PyInstaller 单文件 .exe，SQLite 本地存储，数据不离开学校</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ★ Flagship 2 video row -->
+    <div class="project-hero reveal" style="border-top: none; padding-top: 0;">
+      <div class="project-visual reveal">
+        <div class="video-wrapper">
+          <video class="project-video" autoplay muted loop playsinline src="videos/grade.mp4"></video>
+          <div class="video-veil">
+            <div class="veil-ring"></div>
+            <span class="veil-text">视频加载中</span>
+          </div>
+        </div>
+      </div>
+      <div class="project-info reveal">
+        <p class="project-number">技术深度</p>
+        <ul class="project-highlights">
+          <li>Qwen-VL 视觉大模型识别成绩表格 → 结构化JSON，多图合并按姓名归并</li>
+          <li>4级OCR降级：Qwen-VL → 腾讯云 → RapidOCR → PaddleOCR，逐级兜底</li>
+          <li>图像预处理流水线：纠偏 → 增强 → 二值化 → 锐化，提升低质量照片识别率</li>
+          <li>PySide6 + Fluent-Widgets：Microsoft Fluent Design System，暗色主题默认，Mica 材质</li>
+          <li>内容级重复检测：同名学生+科目+分数全量比对，防止误导入</li>
+          <li>跨页表格合并：列数匹配 + 页距 + 表头启发式，多页成绩表自动拼接</li>
+        </ul>
+        <div class="project-tags">
+          <span class="tag">Python</span>
+          <span class="tag">Qwen-VL</span>
+          <span class="tag">PySide6</span>
+          <span class="tag">Fluent Design</span>
+          <span class="tag">SQLite</span>
+        </div>
+        <p style="color: var(--text-tertiary); font-size: 0.8rem; margin-top: 12px;">
+          交付形态：PyInstaller 打包 .exe · 教师双击即用 · 完整使用说明与培训PPT
+        </p>
+      </div>
+    </div>
+
+    <!-- Project 1: CodeClean -->
+    <div class="project-hero reveal">
       <div class="project-visual reveal">
         <div class="video-wrapper">
           <video class="project-video" autoplay muted loop playsinline src="videos/codeclean.mp4"></video>
@@ -1140,14 +1248,17 @@ h3 {
         </div>
       </div>
       <div class="project-info reveal">
-        <p class="project-number">技术深度</p>
+        <p class="project-number">01 / 多Agent 安全清理</p>
+        <h3>CodeClean</h3>
+        <p class="project-desc">
+          一套把安全做到极致的 AI 代码清理平台：清理端 7 Agent"做手术"，
+          学习端 5 Agent"不再犯同样的错"，做的人不审，审的人不做。
+        </p>
         <ul class="project-highlights">
-          <li>Tree-sitter AST 解析 + 框架感知检测：识别 FastAPI/Django/Vue 动态路由，从源头降低误删率</li>
-          <li>L1/L2/L3 三级风险分流：L3 高置信度自动执行，L2 暂停人工审批（LangGraph 断点恢复）</li>
-          <li>FATAL/RETRY/DEGRADE 三级异常韧性：单文件失败自动重试，学习系统错误永不阻断清理</li>
-          <li>十节点 LangGraph DAG 编排 + SqliteSaver 持久化，进程重启从断点续跑</li>
-          <li>零 Docker 依赖：临时目录 + subprocess 进程隔离，Windows 原生运行</li>
-          <li>五阶段学习闭环：Harvester → Evaluator → Validator → Integrator → Monitor</li>
+          <li>沙箱副本只读执行 + .quarantine/ 只隔离不删除 + SHA256 基线回归校验，异常自动回滚</li>
+          <li>Tree-sitter AST + 框架感知检测：识别 FastAPI/Django/Vue 动态路由，从源头降低误删率</li>
+          <li>L1/L2/L3 三级风险分流，L2 暂停人工审批（LangGraph checkpoint 断点恢复）</li>
+          <li>十节点 DAG 编排 + SqliteSaver 断点续跑，FATAL/RETRY/DEGRADE 三级异常韧性</li>
         </ul>
         <div class="project-tags">
           <span class="tag">Python</span>
@@ -1155,15 +1266,14 @@ h3 {
           <span class="tag">12 Agent</span>
           <span class="tag">Tree-sitter</span>
           <span class="tag">沙箱隔离</span>
-          <span class="tag">学习闭环</span>
         </div>
         <p style="color: var(--text-tertiary); font-size: 0.8rem; margin-top: 12px;">
-          工程规模：5000行 Python · 36个模块 · 12个Agent · 12个Prompt模板 · 85项自动化测试
+          工程规模：5000行 Python · 36个模块 · 85项自动化测试全过
         </p>
       </div>
     </div>
 
-    <!-- Project 1: Enterprise System -->
+    <!-- Project 2: Enterprise System -->
     <div class="project-hero reveal">
       <div class="project-visual reveal">
         <div class="video-wrapper">
@@ -1197,40 +1307,6 @@ h3 {
       </div>
     </div>
 
-    <!-- Project 2: Grade Tool -->
-    <div class="project-hero reveal">
-      <div class="project-visual reveal">
-        <div class="video-wrapper">
-          <video class="project-video" autoplay muted loop playsinline src="videos/grade.mp4"></video>
-          <div class="video-veil">
-            <div class="veil-ring"></div>
-            <span class="veil-text">视频加载中</span>
-          </div>
-        </div>
-      </div>
-      <div class="project-info reveal">
-        <p class="project-number">03 / AI × 教育垂直场景</p>
-        <h3>成绩统计工具</h3>
-        <p class="project-desc">
-          一款面向中学教师的桌面端成绩管理应用。AI视觉识别让教师从手工录入中解放，
-          四级OCR降级链路确保有网无网都能用。Win11 Fluent Design 极简科技风界面，把AI打包成普通人双击就能用的工具。
-        </p>
-        <ul class="project-highlights">
-          <li>Qwen-VL 视觉大模型识别表格 → 结构化JSON，支持多图合并按姓名归并</li>
-          <li>4级OCR降级：Qwen-VL → 腾讯云 → RapidOCR → PaddleOCR，逐级兜底</li>
-          <li>PySide6 + Fluent-Widgets，Microsoft Fluent Design System，暗色主题默认，Mica 材质效果</li>
-          <li>PyInstaller 打包 .exe，SQLite 本地存储，教师无需安装任何环境</li>
-        </ul>
-        <div class="project-tags">
-          <span class="tag">Python</span>
-          <span class="tag">Qwen-VL</span>
-          <span class="tag">PySide6</span>
-          <span class="tag">Fluent Design</span>
-          <span class="tag">SQLite</span>
-        </div>
-      </div>
-    </div>
-
     <!-- Project 3: RAG MAX -->
     <div class="project-hero reveal">
       <div class="project-visual reveal">
@@ -1243,7 +1319,7 @@ h3 {
         </div>
       </div>
       <div class="project-info reveal">
-        <p class="project-number">04 / RAG 全链路实践</p>
+        <p class="project-number">03 / RAG 全链路实践</p>
         <h3>RAG 知识库 MAX</h3>
         <p class="project-desc">
           面向招投标、法务、研究的私有化桌面端RAG系统。17种模块化RAG策略、6家国产大模型接入、
@@ -1335,7 +1411,7 @@ h3 {
         <div>
           <p class="timeline-year">现在</p>
           <h3>AI产品构建者</h3>
-          <p class="timeline-what">4个从0到1的AI产品 · 跨Python/Node.js/Electron全栈</p>
+          <p class="timeline-what">5个从0到1的AI产品 · 跨Python/Node.js/JavaScript全栈</p>
           <p class="timeline-gain">把商业经验+技术能力融合——让AI不再是Demo，而是可交付、可变现的产品</p>
         </div>
       </div>
