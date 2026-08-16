@@ -795,8 +795,21 @@ h3 {
 }
 .wip-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: 1.15fr 0.85fr;
   gap: var(--spacing-sm);
+  align-items: stretch;
+}
+.wip-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+.wip-col .wip-card,
+.wip-col .wip-card-placeholder {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .wip-card {
   background: var(--bg-card);
@@ -835,7 +848,6 @@ h3 {
   letter-spacing: 0.06em;
 }
 .wip-card-video {
-  grid-column: span 2;
   display: flex;
   flex-direction: column;
 }
@@ -1006,9 +1018,6 @@ h3 {
   }
   .wip-grid {
     grid-template-columns: 1fr;
-  }
-  .wip-card-video {
-    grid-column: span 1;
   }
   .project-mini-grid {
     grid-template-columns: 1fr;
@@ -1415,14 +1424,28 @@ h3 {
     <span class="section-label reveal">Work in Progress</span>
     <h2 class="reveal" style="font-size: clamp(1.8rem, 3vw, 2.4rem);">正在开发</h2>
     <div class="wip-grid">
-      <div class="wip-card reveal">
-        <h4>星河班务工作台</h4>
-        <p>本地优先的班主任工作台：班级总览、快速考勤、学生档案、备课中心、家校沟通、数据周报。正在开发成绩统计模块，与桌面端成绩工具数据互通。</p>
-        <div class="project-tags">
-          <span class="tag">Next.js</span>
-          <span class="tag">React</span>
-          <span class="tag">PWA</span>
-          <span class="tag">开源</span>
+      <div class="wip-col">
+        <div class="wip-card reveal">
+          <h4>星河班务工作台</h4>
+          <p>本地优先的班主任工作台：班级总览、快速考勤、学生档案、备课中心、家校沟通、数据周报。正在开发成绩统计模块，与桌面端成绩工具数据互通。</p>
+          <div class="project-tags">
+            <span class="tag">Next.js</span>
+            <span class="tag">React</span>
+            <span class="tag">PWA</span>
+            <span class="tag">开源</span>
+          </div>
+        </div>
+        <div class="wip-card reveal">
+          <h4>连锁餐饮智能管理系统</h4>
+          <p>基于 Coze 平台搭建的餐饮SaaS工具，覆盖仓储统计、客户画像分析、会员体系、多分店数据看板。</p>
+          <div class="project-tags">
+            <span class="tag">Coze</span>
+            <span class="tag">Agent</span>
+            <span class="tag">数据看板</span>
+          </div>
+        </div>
+        <div class="wip-card-placeholder reveal">
+          更多项目即将上线
         </div>
       </div>
       <div class="wip-card wip-card-video reveal">
@@ -1442,18 +1465,6 @@ h3 {
           <span class="tag">PyQt6</span>
           <span class="tag">AES-256</span>
         </div>
-      </div>
-      <div class="wip-card reveal">
-        <h4>连锁餐饮智能管理系统</h4>
-        <p>基于 Coze 平台搭建的餐饮SaaS工具，覆盖仓储统计、客户画像分析、会员体系、多分店数据看板。</p>
-        <div class="project-tags">
-          <span class="tag">Coze</span>
-          <span class="tag">Agent</span>
-          <span class="tag">数据看板</span>
-        </div>
-      </div>
-      <div class="wip-card-placeholder reveal">
-        更多项目即将上线
       </div>
     </div>
   </div>
