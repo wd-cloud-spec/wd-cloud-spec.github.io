@@ -884,6 +884,113 @@ h3 {
   object-fit: cover;
 }
 
+/* 旗舰级 WIP 卡片（全宽） */
+.wip-featured {
+  grid-column: 1 / -1;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 36px 40px;
+  transition: all var(--transition-smooth);
+}
+.wip-featured:hover {
+  background: var(--bg-card-hover);
+  transform: translateY(-1px);
+}
+.wip-featured-inner {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 40px;
+  align-items: center;
+}
+.wip-featured h4 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  margin-bottom: 10px;
+}
+.wip-featured-desc {
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+.wip-featured-points {
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.wip-featured-points li {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  line-height: 1.55;
+  padding-left: 18px;
+  position: relative;
+}
+.wip-featured-points li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.7;
+}
+/* Agent 流水线视觉块 */
+.agent-pipeline {
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-md);
+  padding: 24px;
+}
+.agent-pipeline-title {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--text-tertiary);
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+.agent-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 12px 0;
+}
+.agent-step + .agent-step {
+  border-top: 1px solid var(--border);
+}
+.agent-num {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--accent);
+  flex-shrink: 0;
+  width: 26px;
+  padding-top: 2px;
+}
+.agent-step h5 {
+  font-size: 0.9rem;
+  margin-bottom: 2px;
+}
+.agent-step p {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin: 0;
+}
+.agent-rule {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-tertiary);
+  letter-spacing: 0.04em;
+}
+
 /* ============================================
    Scene 6: Contact
    ============================================ */
@@ -1034,6 +1141,13 @@ h3 {
   }
   .wip-grid {
     grid-template-columns: 1fr;
+  }
+  .wip-featured-inner {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .wip-featured {
+    padding: 28px 24px;
   }
   .project-mini-grid {
     grid-template-columns: 1fr;
@@ -1456,6 +1570,54 @@ h3 {
     <span class="section-label reveal">Work in Progress</span>
     <h2 class="reveal" style="font-size: clamp(1.8rem, 3vw, 2.4rem);">正在开发</h2>
     <div class="wip-grid">
+      <div class="wip-featured reveal">
+        <div class="wip-featured-inner">
+          <div>
+            <h4>AI 私域获客系统</h4>
+            <p class="wip-featured-desc">私域线索全链路自动化获客引擎：DeepSeek 多 Agent 接管「线索清洗 → 意向打分 → 对话承接 → SOP 培育」全流程，7×24 不眠不休，非工作时间的商机不再流失。</p>
+            <div class="project-tags">
+              <span class="tag">FastAPI</span>
+              <span class="tag">DeepSeek-V4</span>
+              <span class="tag">React</span>
+              <span class="tag">PostgreSQL</span>
+              <span class="tag">RAG</span>
+              <span class="tag">企业微信</span>
+            </div>
+            <ul class="wip-featured-points">
+              <li>多 Agent 编排：清洗 → 打分 → 路由 → 对话，单 Agent 失败不影响流水线整体</li>
+              <li>私有 RAG 知识库防幻觉：六类业务知识库 + 违禁词拦截，AI 应答零编造</li>
+              <li>三级 OCR 降级链：Qwen-VL → 云端表格 OCR → 本地 RapidOCR，扫描件 PDF 自动检测补偿</li>
+              <li>成本三重杠杆：Flash 主力 / Pro 备用路由 + 谷时错峰调度 + Prompt 缓存，月成本约 550-1000 元</li>
+              <li>合规基因：无自动加好友、无批量群发、无逆向协议，企微风控零风险</li>
+            </ul>
+          </div>
+          <div class="agent-pipeline">
+            <div class="agent-pipeline-title">DeepSeek Multi-Agent Pipeline</div>
+            <div class="agent-step">
+              <span class="agent-num">01</span>
+              <div>
+                <h5>Agent1 · 线索清洗</h5>
+                <p>解析非结构化线索 → 固定 JSON 结构化输出，未知字段标记 unknown 不编造</p>
+              </div>
+            </div>
+            <div class="agent-step">
+              <span class="agent-num">02</span>
+              <div>
+                <h5>Agent2 · 意向打分</h5>
+                <p>0-100 意向分 + 多维标签 + 客户分层，每轮对话动态更新画像</p>
+              </div>
+            </div>
+            <div class="agent-step">
+              <span class="agent-num">03</span>
+              <div>
+                <h5>Agent3 · 对话承接</h5>
+                <p>RAG 知识库 + 客户画像生成个性化应答，报价/合同等敏感场景强制人工审核</p>
+              </div>
+            </div>
+            <div class="agent-rule">PRD v1.1 定稿 · 全栈开发中 · 企业微信生态 · 合规优先</div>
+          </div>
+        </div>
+      </div>
       <div class="wip-col">
         <div class="wip-card reveal">
           <h4>班务工作台</h4>
