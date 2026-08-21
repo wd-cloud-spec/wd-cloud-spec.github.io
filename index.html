@@ -1258,8 +1258,8 @@ h3 {
         <span class="flagship-tag">★ 旗舰项目 01</span>
         <h3 style="font-size: clamp(2rem, 4vw, 3rem);">DeepSeek Harness Mobile</h3>
         <p class="project-desc" style="font-size: 1.1rem; max-width: 720px;">
-          Deepseek Harness 上线48小时内完成插件开发，用DSH让DSH更方便使用。
-          手机远程指挥台 —— 随时查看 PC 端 Agent 的工作进度、远程发言、审批放行。
+          AI 在电脑上干活的时候，你不用守在电脑前。手机上就能看到它做到哪一步了、
+          需要你拍板的地方点一下就行 —— "同一个局域网，人不在活不耽误"。
         </p>
 
         <!-- Dual panels -->
@@ -1304,14 +1304,12 @@ h3 {
         </div>
       </div>
       <div class="project-info reveal">
-        <p class="project-number">技术深度</p>
+        <p class="project-number">技术亮点</p>
         <ul class="project-highlights">
-          <li>双面插件架构：宿主进程端 + 浏览器UI端同一包分发，~2,650行核心代码</li>
+          <li>双面插件架构：宿主进程端 + 浏览器UI端同一包分发，一键安装，MIT 开源</li>
+          <li>安全桥接：14 路径白名单代理 + 旋转 Token + 本机 Origin 校验，恶意页面无法跨站攻击</li>
           <li>原生 AbortSignal 三级捕获：从手机远程停止 PC 端 Agent 任务（穿透沙箱伪造实现）</li>
           <li>首答优先语义：手机与PC对审批/问答拥有同等权力，先答者生效</li>
-          <li>零外部资源单文件 UI：无第三方脚本无字体引用，隐私零泄露</li>
-          <li>深色指挥台设计：墨蓝 + 琥珀 + 青，notched 屏安全区适配</li>
-          <li>12条工程踩坑记录 + 桥接回归测试，冷启动/热重载竞态均有防护</li>
         </ul>
         <div class="project-tags">
           <span class="tag">DeepSeek Harness</span>
@@ -1335,8 +1333,8 @@ h3 {
         <span class="flagship-tag">★ 旗舰项目 02</span>
         <h3 style="font-size: clamp(2rem, 4vw, 3rem);">CodeClean</h3>
         <p class="project-desc" style="font-size: 1.1rem; max-width: 720px;">
-          一套把安全做到极致的 AI 代码清理平台：让不懂代码的人也能检查冗余代码文件。
-          清理端 7 Agent"做手术"，学习端 5 Agent"不再犯同样的错"。
+          项目代码堆久了会有大量"没人敢动"的老文件。CodeClean 让不懂代码的人也能安全清理
+          —— 先试跑验证、删了能找回、出问题自动还原。
         </p>
 
         <!-- Agent panels -->
@@ -1381,14 +1379,12 @@ h3 {
         </div>
       </div>
       <div class="project-info reveal">
-        <p class="project-number">技术深度</p>
+        <p class="project-number">技术亮点</p>
         <ul class="project-highlights">
+          <li>12 个 Agent 协作（清理端 7 个"做手术" + 学习端 5 个"记教训"），10 节点 LangGraph 编排，断点续跑</li>
           <li>Tree-sitter AST + 框架感知检测：识别 FastAPI/Django/Vue 动态路由，从源头降低误删率</li>
-          <li>L1/L2/L3 三级风险分流：L3 高置信度自动执行，L2 暂停人工审批（LangGraph 断点恢复）</li>
-          <li>FATAL/RETRY/DEGRADE 三级异常韧性：单文件失败自动重试，学习系统错误永不阻断清理</li>
-          <li>十节点 LangGraph DAG 编排 + SqliteSaver 持久化，进程重启从断点续跑</li>
+          <li>L1/L2/L3 三级风险分流：高置信度自动执行，中风险暂停人工审批（断点恢复）</li>
           <li>零 Docker 依赖：临时目录 + subprocess 进程隔离，Windows 原生运行</li>
-          <li>五阶段学习闭环：Harvester → Evaluator → Validator → Integrator → Monitor</li>
         </ul>
         <div class="project-tags">
           <span class="tag">Python</span>
@@ -1413,8 +1409,8 @@ h3 {
         <span class="flagship-tag">★ 旗舰项目 03</span>
         <h3 style="font-size: clamp(2rem, 4vw, 3rem);">铜雀台 × 商单台</h3>
         <p class="project-desc" style="font-size: 1.1rem; max-width: 720px;">
-          AI 销售管理平台双子星：铜雀台管客户，商单台管履约 —— 同一账号体系，数据天然互通，
-          语音助手让"说话"变成录客户、开报价、建订单。
+          一套系统管完销售的"事前事后"——铜雀台管客户（建档、跟进、判意向），
+          商单台管履约（报价、合同、回款、交付、售后）。最方便的是：说话就能干活。
         </p>
 
         <!-- Dual panels -->
@@ -1459,13 +1455,11 @@ h3 {
         </div>
       </div>
       <div class="project-info reveal">
-        <p class="project-number">技术深度</p>
+        <p class="project-number">技术亮点</p>
         <ul class="project-highlights">
-          <li>语音→动作流水线：MediaRecorder → 16kHz PCM 重采样 → 讯飞WS（手写HMAC-SHA256签名）→ DeepSeek 结构化意图 → 前端执行类型化动作</li>
-          <li>50产品目录注入 system prompt，口语化产品名自动映射SKU并计价（实测"高配工位套餐2套"自动计价21,897元）</li>
-          <li>金额/状态一致性由 PostgreSQL RPC 保证，不在前端算账</li>
-          <li>版本化幂等迁移：从2人团队演化到20-50人组织（层级权限 + 公海自动回收）</li>
-          <li>审批门控漏斗：won/lost 回退需审批，stage_logs 审计轨迹</li>
+          <li>语音→动作流水线：语音识别（讯飞）→ AI 意图理解（DeepSeek）→ 自动执行操作，全程自主开发</li>
+          <li>金额/状态一致性由数据库事务保证，不在前端算账；审批门控 + 全流程审计日志</li>
+          <li>版本化幂等迁移：从 2 人团队演化到 20-50 人组织（层级权限 + 公海自动回收）</li>
           <li>Repository 模式：Supabase 云存储 + IndexedDB 本地离线缓存双实现</li>
         </ul>
         <div class="project-tags">
@@ -1501,13 +1495,16 @@ h3 {
         <p class="project-number">01 / AI × 教育垂直场景</p>
         <h3>成绩统计工具</h3>
         <p class="project-desc">
-          现代风格设计完整工作台，AI 视觉识别让教师从手工录入中解放 —— 双击即用的桌面工具。
+          给老师用的"拍照录成绩"工具——拍一张成绩单照片，AI 自动识别成电子表格，
+          分析图表自动生成。
         </p>
         <ul class="project-highlights">
-          <li>Qwen-VL 视觉大模型识别成绩表格 → 结构化JSON，多图合并按姓名归并</li>
-          <li>4级OCR降级：Qwen-VL → 腾讯云 → RapidOCR → PaddleOCR，逐级兜底</li>
-          <li>PySide6 + Fluent Design 界面 + 视频动态背景，教师零学习成本</li>
-          <li>PyInstaller 打包 .exe，SQLite 本地存储，教师无需安装任何环境</li>
+          <li>拍照即录入：不用手敲，拍个照成绩全进去了；多张照片自动按姓名合并</li>
+          <li>分析自动出：平均分、排名、分数段分布等图表一键生成</li>
+          <li>错题检索：输入关键词就能找到所有相关错题</li>
+          <li>断网也能用：没网时走本地识别兜底（4 级 OCR 逐级降级）</li>
+          <li>数据不出校门：成绩只存在本地电脑，隐私安全</li>
+          <li>双击即用的桌面应用：.exe 打包，教师零学习成本</li>
         </ul>
         <div class="project-tags">
           <span class="tag">Python</span>
@@ -1537,14 +1534,17 @@ h3 {
         <p class="project-number">02 / 全栈 + AI 集成</p>
         <h3>企业管理系统</h3>
         <p class="project-desc">
-          一套面向中小企业的AI全栈管理平台，集成OA、CRM、WMS三大子系统，
-          将DeepSeek的AI能力嵌入6个真实业务流程——不是Demo，是可部署的产品。
+          中小企业的一站式管理后台——办公（OA）、客户（CRM）、仓库（WMS）三合一，
+          AI 把重复琐事全干了，不是 Demo，是可部署的产品。
         </p>
         <ul class="project-highlights">
-          <li>Node.js 零依赖后端，~60个API端点，100并发压测零崩溃</li>
-          <li>6大AI功能：智能填单、发票识别、CRM摘要、赢单预测、采购建议、全局助手</li>
-          <li>自研中文NLP确定性后处理，补充AI输出的不稳定性</li>
-          <li>Electron 打包为桌面应用，纯手写 XLSX 解析器</li>
+          <li>智能填单：说一句"申请办公用品采购"，表单自动填好</li>
+          <li>发票自动识别：拍张发票，信息自动录入</li>
+          <li>跟进摘要：客户沟通记录太长，AI 自动提炼重点</li>
+          <li>赢单预测：根据历史数据判断这个单子胜算多大</li>
+          <li>采购建议：库存不够了，自动提醒该采购什么、买多少</li>
+          <li>一个 AI 助手：想问什么直接问，系统里所有信息它都知道</li>
+          <li>技术底子：Node.js 零依赖后端，100 并发压测零崩溃，可局域网/私有云部署</li>
         </ul>
         <div class="project-tags">
           <span class="tag">Node.js</span>
@@ -1584,11 +1584,11 @@ h3 {
               <span class="tag">企业微信</span>
             </div>
             <ul class="wip-featured-points">
-              <li>多 Agent 编排：清洗 → 打分 → 路由 → 对话，单 Agent 失败不影响流水线整体</li>
-              <li>私有 RAG 知识库防幻觉：六类业务知识库 + 违禁词拦截，AI 应答零编造</li>
-              <li>三级 OCR 降级链：Qwen-VL → 云端表格 OCR → 本地 RapidOCR，扫描件 PDF 自动检测补偿</li>
-              <li>成本三重杠杆：Flash 主力 / Pro 备用路由 + 谷时错峰调度 + Prompt 缓存，月成本约 550-1000 元</li>
-              <li>合规基因：无自动加好友、无批量群发、无逆向协议，企微风控零风险</li>
+              <li>7×24 值守：非工作时间进来的客户，AI 立刻响应，商机不流失</li>
+              <li>自动判断意向：从聊天里识别客户是"随便问问"还是"真心要买"</li>
+              <li>回答不出错：AI 只按公司资料回答，不瞎编价格和承诺</li>
+              <li>自动培育：低意向客户，AI 按节奏发消息慢慢培养，不打扰不骚扰</li>
+              <li>合规安全：不自动加好友、不批量群发，平台风控零风险</li>
             </ul>
           </div>
           <div class="agent-pipeline">
