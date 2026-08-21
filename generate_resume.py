@@ -129,7 +129,7 @@ sec.right_margin = Cm(1.8)
 
 # ============ 头部 ============
 para(doc, "王栋", size=22, bold=True, space_after=2, line=1.1)
-para(doc, "AI产品构建者  ·  如何用AI去提高生产效率", size=11,
+para(doc, "AI产品构建者  ·  如何用AI去提高效率", size=11,
      color=COLOR_ACCENT, space_after=4, line=1.2)
 
 para(doc, "📧 1252395926@qq.com   📞 130 3283 9382   🔗 github.com/wd-cloud-spec   🔗 gitee.com/scyilang_0",
